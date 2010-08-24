@@ -1,0 +1,22 @@
+<ul class="root">
+	<% for page in @pages %>
+		<li>
+			<%= page.name %> - <%= link_to t('page.edit'), edit_page_path(page), :class => 'ajax' %> |
+			<% unless page.theme.theme_items.empty? %>
+			<%= link_to t('page.edit_content'), edit_content_path(:item_id => get_content_id(page)) %> |
+			<% end %>
+			<%= link_to t('common.delete'), page, :method => :delete, :confirm => t('common.confirm') %>
+			<ul class="sub">
+				<% for sub_page in page.sub_pages %>
+					<li>
+						<%= sub_page.name %> - <%= link_to t('page.edit'), edit_page_path(sub_page), :class => 'ajax'  %> |
+						<% unless sub_page.theme.theme_items.empty? %>
+						<%= link_to t('page.edit_content'), edit_content_path(:item_id => get_content_id(sub_page)) %> |
+						<% end %>
+						<%= link_to t('common.delete'), sub_page, :method => :delete, :confirm => t('common.confirm') %>
+					</li>
+				<% end %>
+			</ul>
+		</li>
+	<% end %>
+</ul>

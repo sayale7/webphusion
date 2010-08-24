@@ -1,0 +1,128 @@
+#image_upload_section{
+	width:770px;
+	overflow:hidden;
+	clear:both;
+}
+
+#upload_photo_container{
+	float:right;
+	overflow:hidden;
+	width:175px;
+	height:531px;
+	padding: 5px;
+	border:solid 1px darkgray;
+	border-left:none;
+	clear:none;
+	background:#F7F1FD;
+	background-image: url('/images/button_background.png');
+	background-repeat:repeat-x;
+}
+
+#upload_photo_container p{
+	position:absolute;
+	margin:3px 0px 0px 35px;
+	font-size:11px;
+	color:#727272;
+}
+
+#my_photos{
+	overflow:auto;
+	float:left;
+	width:582px;
+	height:478px;
+	border:solid 1px darkgray;
+	background:#fff;
+}
+
+#overlay{
+	position:absolute;
+	z-index:90;
+	float:left;
+	width:584px;
+	height:482px;
+	background:#000;
+	opacity:0.2;
+	background-image: url('/images/ajax-loader_balken.gif');
+	background-repeat:no-repeat;
+	background-position:center;
+	display:none;
+	margin-top:31px;
+}
+
+#image_upload_bottom_left{
+	float:left;
+	width:572px;
+	height:20px;
+	padding:5px;
+	border:solid 1px darkgray;
+	border-top:none;
+	background-image: url('/images/button_background.png');
+	background-repeat:repeat-x;
+}
+
+#image_upload_top_left{
+	float:left;
+	width:572px;
+	height:21px;
+	padding:5px;
+	border:solid 1px darkgray;
+	border-bottom:none;
+	background-color:#EAEAEA;
+}
+
+#image_upload_top_left p{
+	padding-left:10px;
+	display:table-cell;
+	vertical-align:middle;
+}
+	
+#image_upload_top_right{
+	float:right;
+	overflow:auto;
+	width:198px;
+	padding:5px;
+	padding-left:20px;
+	height:20px;
+	border:solid 1px darkgray;
+	border-left:none;
+	border-bottom:none;
+	background-image: url('/images/button_background.png');
+	background-repeat:repeat-x;
+}
+
+.my_photo_row{
+	clear:both;
+	overflow:hidden;
+	width:100%;
+	height:55px;
+}
+
+.my_photo_row .image{
+	float:left;
+	width:65px;
+	height:45px;
+	padding:5px;
+}
+
+.my_photo_row .info{
+	float:left;
+	padding:0 15px 0 15px;
+	height:55px;
+	display:table;
+}
+
+.my_photo_row .info p{
+	display:table-cell;
+	vertical-align:middle;
+}
+.my_photo_row .info a{
+	display:table-cell;
+	vertical-align:middle;
+	text-decoration:none;
+}
+.my_photo_row .info img{
+	display:table-cell;
+	vertical-align:middle;
+}
+
+

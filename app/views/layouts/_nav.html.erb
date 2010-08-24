@@ -1,0 +1,13 @@
+<ul>
+	<% if current_user %>
+	<li>
+			<%= link_to t('file_upload.upload_images'), assets_url, :class => 'assets_iframe' %>
+	</li>
+	<li>
+			<%= link_to t('file_upload.upload_common_files'), common_files_url, :class => 'assets_iframe' %>
+	</li>
+	<li>
+			<%= link_to t('theme.create'), new_theme_path, :class => 'ajax' %>
+	</li>
+	<% end %>
+</ul>

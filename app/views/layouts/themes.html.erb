@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) || "Untitled" %></title>
+    <%= stylesheet_link_tag "application"%>
+    <%= javascript_include_tag 'jquery', 'rails', 'application' %>
+		<script type="text/javascript" src="/galleries/fancybox/jquery.fancybox.js"></script>
+		<link rel="stylesheet" href="/galleries/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+
+				/* This is basic - uses default settings */
+
+				$("a.single_image").fancybox();
+				$("a.full_iframe").fancybox({
+					'width'		:	1200,
+					'height'	:	700,
+					'type'		: 'iframe'	
+				});
+				
+				$(".assets_iframe").fancybox({ 
+					'width'                 : 780, 
+					'height'                : 550,
+					'type'                  : 'iframe' 
+				});
+				/* Using custom settings */
+
+				$("a.ajax").live('click', function(){
+					$(this).fancybox({
+						'autoScale'	 : true
+					});
+					$(this).click();
+					return false;
+				});
+
+				/* Apply fancybox to multiple items */
+
+				$("a.group").fancybox({
+					'speedIn'		:	600, 
+					'speedOut'		:	200, 
+					'overlayShow'	:	false
+				});
+
+			});
+		</script>		
+
+		
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div id="container">
+			<div id="user_nav">
+			  <%= render '/layouts/main_nav' %>
+			</div>
+			<div id="message"></div>
+			<div id="content">
+      	<%= yield %>
+			</div>
+			<div id="side_nav">
+				<%= render '/themes/nav' %>
+			</div>
+    </div>
+  </body>
+</html>
+
+
+<% if false %>
+	
+	<div id="side_nav">
+		<%= render "/layouts/nav" %>
+		<div id="ajax_content">
+			 <%= render '/themes/themes' %>
+		</div>
+	</div>
+<% end %>

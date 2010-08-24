@@ -1,0 +1,4 @@
+$('#side_nav').html("<%= escape_javascript(render('/pages/items')) %>");
+setTimeout(function(){
+	$("#data_item_contents_<%= Item.find(@item_data_content.item_data.item_id).id %>").css('display', 'block');
+},200);

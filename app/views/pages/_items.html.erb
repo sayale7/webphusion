@@ -1,0 +1,40 @@
+<div id="added_items">
+<% @page.items_by_theme.each do |item| %>
+	<div class="full">
+		<% if item.theme_item.item_kind.to_s.eql?('Text') %>
+			<%= link_to item.theme_item.name, '#', :class => 'data_items' %> <%# link_to t('item_data.edit_item_data_content'), "/new_content", :class => 'item_data_iframe' %>
+		<% else %>
+			<%= link_to item.theme_item.name, '#' %>
+		<% end %>
+		<div id="data_item_contents_<%= item.id %>" class="hidden page_languages">
+			<% item.item_data_contents.each do |content| %>
+				 <%= link_to content.locale, "/edit_content?id=#{content.id}", :remote => true, :rel => 'tiny' %>
+			<% end %>
+		</div>
+	</div>
+<% end %>
+</div>
+
+<% if false %>
+
+<% unless get_available_locales.empty? %>
+<%= form_for ItemDataContent.new, :remote => 'true' do |f| %>
+<%= f.hidden_field :content, :value => '' %>
+<%= f.hidden_field :name, :value => ''  %>
+<%= f.hidden_field :item_data_id, :value => item.item_data.id %>
+<%= f.select(:locale, options_for_select(get_available_locales), :class => "the_type") %>
+<%= f.submit t('common.activate') %>
+<% end %>
+<% end %>
+
+
+<div id="available_items">
+	<% (@theme.theme_items - available_theme_items(@page)).each do |available_item| %>
+		<div class="full">
+			<%= link_to image_tag('/images/add.png'), add_item_to_page_url(:item => available_item, :page => @page), :class => 'img'  %>
+			<%= link_to available_item.name, '#' %>
+		</div>
+	<% end %>
+</div>
+
+<% end %>

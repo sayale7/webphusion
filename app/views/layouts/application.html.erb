@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) || "Untitled" %></title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag 'jquery', 'rails', 'application', '/galleries/fancybox/jquery.fancybox.js' %>
+		<link rel="stylesheet" href="/galleries/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				
+				/* This is basic - uses default settings */
+				$("a.single_image").fancybox();
+				$("a.full_iframe").fancybox({
+					'width'		:	850,
+					'height'	:	700,
+					'type'		: 'iframe'	
+				});
+				
+				$(".assets_iframe").fancybox({ 
+					'width'                 : 810, 
+					'height'                : 565, 
+					'type'                  : 'iframe' 
+				});
+				
+				/* Using custom settings */
+
+				$("a.ajax").live('click', function(){
+					$(this).fancybox({
+						'autoScale'	 : true
+					});
+					$(this).click();
+					return false;
+				});
+
+			});
+		</script>		
+
+		
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div id="container">
+			<div id="user_nav">
+			  <%= render '/layouts/main_nav' %>
+			</div>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+			<div id="content_full">
+      	<%= yield %>
+			</div>
+    </div>
+  </body>
+</html>

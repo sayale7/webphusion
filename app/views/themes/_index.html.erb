@@ -1,0 +1,17 @@
+<% if current_user %>
+<ul>
+	<p>
+		<%= link_to t('navigation.new_theme'), new_theme_path(@theme), :class => 'ajax' %>
+	</p>
+	<% @users.each do |user| %>
+		<% unless user.themes.empty? %>
+		<h3><%= user.email %></h3>
+		<% user.themes.each do |theme| %>
+			<p>
+				<%= link_to theme.name, edit_theme_path(theme) %>
+			</p>
+		<% end %>
+		<% end %>
+	<% end %>
+</ul>
+<% end %>

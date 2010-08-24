@@ -1,0 +1,8 @@
+<ul>
+		<% @theme.theme_items.each do |item| %>
+			<li class="full">
+				<%= link_to image_tag('/images/cancel.png'), item, :method => :delete, :remote => true, :confirm => t('theme_item.confirm'), :class => 'img' %>
+				<%= link_to item.name, edit_theme_item_path(item), :class => 'ajax' %>
+			</li>
+		<% end %>
+</ul>

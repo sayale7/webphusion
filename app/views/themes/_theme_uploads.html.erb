@@ -1,0 +1,13 @@
+<ul>
+	<li>
+		<%= link_to t('file_upload.theme_upload'), theme_uploads_url(:theme_id => @theme.id), :class => 'assets_iframe' %> 
+	</li>
+</ul>
+
+<ul>
+	<% only_editable(ThemeUpload.find_all_by_theme_id(@theme.id)).each do |upload| %>
+		<li class="full">
+			<%= link_to upload.theme_file.original_filename, upload_files_eiditing_path(:theme_id => @theme.id, :name => upload.theme_file.original_filename) %>
+		</li>
+	<% end %>
+</ul>

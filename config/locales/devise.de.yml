@@ -1,0 +1,39 @@
+de:
+  errors:
+    messages:
+      not_found: "nicht gefunden"
+      already_confirmed: "wurde schon bestätigt"
+      not_locked: "war nicht gesperrt"
+
+  devise:
+    failure:
+      unauthenticated: 'Sie müssen sich einloggen, bevor Sie weitermachen können!'
+      unconfirmed: 'You have to confirm your account before continuing.'
+      locked: 'Your account is locked.'
+      invalid: 'Ungültige Email Adresse oder Passwort'
+      invalid_token: 'Ungültiger Authentifizierungstoken.'
+      timeout: 'Ihre Session ist abgelaufen, bitte loggen Sie sich ein um fortzufahren.'
+      inactive: 'Ihr Konto wurde noch nicht aktiviert.'
+    sessions:
+      signed_in: 'Erfolgreich eingeloggt!'
+      signed_out: 'Erfolgreich ausgeloggt!'
+    passwords:
+      send_instructions: 'Sie bekommen eine Mail mit den Instruktionen bezüglich dem Rücksetzen ihres Passwortes'
+      updated: 'Ihr Passwort wurde erfolgreich geändert! Sie sind nun eingeloggt!'
+    confirmations:
+      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
+      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+    registrations:
+      signed_up: 'Willkommen bei EasyWebMan.com!'
+      updated: 'Konto wurde erfolgreich geändert'
+      destroyed: 'Ihr Konto wurde erfolgreich gelöscht! Schade dass Sie uns verlassen!'
+    unlocks:
+      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
+      unlocked: 'Your account was successfully unlocked. You are now signed in.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Confirmation instructions'
+      reset_password_instructions:
+        subject: 'Rücksetzinformationen Ihres Passwortes'
+      unlock_instructions:
+        subject: 'Unlock Instructions'

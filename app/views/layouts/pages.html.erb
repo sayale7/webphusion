@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) || "Untitled" %></title>
+    <%= stylesheet_link_tag "application"%>
+    <%= javascript_include_tag 'jquery', 'rails', 'application' %>
+		<script type="text/javascript" src="/galleries/fancybox/jquery.fancybox.js"></script>
+		<link rel="stylesheet" href="/galleries/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+
+				/* This is basic - uses default settings */
+
+				$("a.single_image").fancybox();
+				$("a.full_iframe").fancybox({
+					'width'		:	1200,
+					'height'	:	700,
+					'type'		: 'iframe'	
+				});
+							
+				$(".item_data_iframe").live('click', function(){
+					$(this).fancybox({ 
+						'width'                 : 900, 
+						'height'                : 650, 
+						'type'                  : 'iframe' 
+					});
+					$(this).click();
+					return false;
+				});
+				
+				$(".assets_iframe").live('click', function(){
+					$(this).fancybox({ 
+						'width'                 : 780, 
+						'height'                : 550, 
+						'type'                  : 'iframe' 
+					});
+					$(this).click();
+					return false;
+				});
+
+				$("a.ajax").fancybox({
+					'autoScale'	 : true
+				});
+
+				/* Apply fancybox to multiple items */
+
+				$("a.group").fancybox({
+					'speedIn'		:	600, 
+					'speedOut'		:	200,
+					'autoScale'	 : true
+				});
+
+			});
+		</script>		
+
+		
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div id="container">
+		<div id="messgaes"></div>
+			<div id="user_nav">
+				<%= render '/shared/tiny' %>
+			  <%= render '/layouts/main_nav' %>
+			</div>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+			<div id="content">
+	      <%# content_tag :h1, yield(:title) if show_title? %>
+      	<%= yield %>
+				
+			</div>
+			<div id="side_nav">
+				<%= render '/pages/items' %>
+			</div>
+    </div>
+  </body>
+</html>

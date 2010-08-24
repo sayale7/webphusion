@@ -1,0 +1,28 @@
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {	
+	$(".my_photo_row").each(function(){
+		if($(this).attr("data-number")%2==0){
+			$(this).css("background", "#EDF3F6").find('img').css('display', 'none').fadeIn(2000);
+		}else{
+			$(this).css("background", "#D8E8FF").find('img').css('display', 'none').fadeIn(2000);
+		}
+	});
+	
+	$('.copy_paste').live('click', function(){
+			var link = $(this).attr('href').substring(0, $(this).attr('href').length - 11);
+			$(window.parent.document).find('#input_link').attr('src', link);
+			parent.$.fancybox.close();
+			return false;
+	});
+});
+</script>
+
+<% @assets.each_with_index do |asset, index| %>
+<div class="my_photo_row" data-number="<%= index %>">
+	<div class="info"><p><%= check_box_tag "asset_ids[]", asset.id %></p></div>
+	<div class="image"><%= image_tag(asset.image.url(:thumb)) %></div>
+	<div class="info" style="width:100px; overfow:scroll;"><%= link_to asset.image.original_filename, asset.image.url, :class => 'single_image' %></div>
+	<div class="info"><p>(<%= asset.image.size / 1000 %> kB / <%= asset.created_at.strftime('%d.%m.%y') %>)</p></div>
+	<div class="info" style="width:100px; overfow:scroll;"><%= link_to t('file_upload.copy_to_area'), asset.image.url, :class => 'copy_paste' %></div>
+</div>
+<% end %>

@@ -1,0 +1,43 @@
+module ApplicationHelper
+	
+	def only_editable(array)
+		new_array = Array.new
+		array.each do |entry|
+			if entry.theme_file_content_type.eql?('text/css') or entry.theme_file_content_type.include?('application/javascriptapplication/x-javascript')
+				new_array.push(entry)
+			end
+		end
+		return new_array
+	end
+	
+	def get_available_locales
+		return ["de", "en"]# - item.item_data_contents.collect { |content| content.locale.to_s }
+	end
+	
+	def available_theme_items(page)
+		theme_items = Array.new
+		page.items_by_theme.each do |item|
+			theme_item = ThemeItem.find(item.theme_item_id)
+			unless theme_item.nil?
+				theme_items.push(theme_item)
+			end
+		end
+		return theme_items
+	end
+	
+	def get_content_id(page)
+		Theme.find(page.theme_id).theme_items.each do |theme_item|
+			Item.find_or_create_by_theme_item_id_and_page_id(theme_item.id, page.id)
+		end
+		if page.items.empty?
+			return nil
+		else
+			page.items.first.item_data_contents.first.id
+		end
+	end
+	
+	def theme_item_kinds
+		%w[Text Bilder]
+	end
+	
+end

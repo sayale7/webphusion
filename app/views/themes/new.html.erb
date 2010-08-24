@@ -1,0 +1,12 @@
+<div>
+	<%= form_for @theme, :html => {:class => 'ajax_form'} do |f| %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<p>
+			<%= f.label :name, t('common.name') %>
+			<%= f.text_field :name %>
+		</p>
+		<p>
+			<%= f.submit t('common.save') %>
+		</p>
+	<% end %>
+</div>

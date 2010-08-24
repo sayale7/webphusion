@@ -1,0 +1,5 @@
+$("#my_photos").html("<%= escape_javascript(render('/theme_uploads/theme_uploads')) %>");
+parent.$("#side_nav").html("<%= escape_javascript(render('/themes/nav')) %>");
+$('#overlay').fadeOut("slow");
+$("input[type=checkbox]").attr("checked", false);
+

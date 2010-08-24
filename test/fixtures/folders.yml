@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  theme_id: 1
+  parent_id: 1
+  name: MyString
+
+two:
+  theme_id: 1
+  parent_id: 1
+  name: MyString

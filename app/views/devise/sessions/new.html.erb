@@ -1,0 +1,17 @@
+<h2><%= t('authentication.login') %></h2>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <p><%= f.label :email, t('common.email') %><br />
+  <%= f.text_field :email %></p>
+
+  <p><%= f.label :password, t('authentication.password') %><br />
+  <%= f.password_field :password %></p>
+
+  <% if devise_mapping.rememberable? -%>
+    <p><%= f.check_box :remember_me %> <%= f.label :remember_me, t('authentication.remember') %></p>
+  <% end -%>
+
+  <p><%= f.submit t('authentication.login') %></p>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>

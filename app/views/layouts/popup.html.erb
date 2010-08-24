@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) || "Untitled" %></title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag 'jquery', 'rails', 'application' %>
+		<script type="text/javascript" src="/galleries/fancybox/jquery.fancybox.js"></script>
+		<link rel="stylesheet" href="/galleries/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('a.single_image').live('click', function(event) { 
+				    $(this).fancybox();
+						event.preventDefault();
+				 });
+				
+				$(".assets_iframe").fancybox({ 
+					'width'                 : 810, 
+					'height'                : 565, 
+					'type'                  : 'iframe' 
+				});
+			});
+		</script>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+			<div id="popup_content">
+				<div id="error_field"></div>
+	      <%= content_tag :h1, yield(:title) if show_title? %>
+      	<%= yield %>
+			</div>
+  </body>
+</html>

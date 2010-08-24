@@ -1,0 +1,101 @@
+de:
+  common:
+    save: Speichern
+    update: Änderungen speichern
+    email: Email Adresse
+    send: Abschicken
+    back: zurück
+    destroy_selected: Ausgewälte löschen
+    name: Name
+    delete: Löschen
+    subdomain: Subdomain
+    wait: bitte warten ...
+    create: Anlegen
+    activate: Aktivieren
+    deactivate: Deaktivieren
+    edit: Bearbeiten
+    active: Aktiv
+    theme: Layout
+    title: Titel
+    confirm: Sind Sie sicher, dass Sie löschen wollen?
+    name: Name
+  authentication:
+    login: Einloggen
+    logout: Ausloggen
+    register: Registrieren
+    password: Passwort
+    password_confirmation: Passwort bestätigen
+    not_you: Nicht Ihr Konto?
+    remember: erinnern?
+    forgot: Passwort vergessen?
+    change_password: Passwort ändern
+    current_password: Derzeitiges Passwort
+    signed_in: Sie sind eingeloggt als
+    account: Mein Konto
+    edit_account: Mein Konto bearbeiten
+    edit_account_leave_password: Bitte leer lassen wenn Sie das Passwort nicht ändern wollen! #leave blank if you don't want to change it
+    we_need_current_password: Wir benötigen Ihr Passwort zum Bestätigen der Änderungen #we need your current password to confirm your changes
+  file_upload:
+    upload_images: Bilder hinzufügen
+    upload_common_files: Dateien Manager
+    theme_upload: Theme Files hinzufügen
+    uploade_at: Raufgeladen am
+    copy_to_area: Bild einfügen
+    upload: Bilder Manager
+    collection_uploads: Bilder zu Gallerie hinzufügen
+  navigation:
+    layout_management: Layout-Verwaltung
+    page_management: Seiten-Verwaltung
+    new_theme: Neues Layout
+  theme_item:
+    new: Neues Element anglegen
+    name: Name
+    destroy: löschen
+    confirm: Wenn Sie dieses Element löschen, werden in allen damit verbundenen Seiten die Inhalte gelöscht!
+    item_kind: Art des Elements
+  item_data:
+    edit_item_data_content: Inhalt des Elements bearbeiten
+    items: Aktivierte Elemente des Elements
+  item:
+    items_of_page: Verfügbare Ressourcen dieses Layoutes
+    no_items: Wählen Sie bitte ein Element aus
+  page:
+    new: Neue Seite anlegen
+    title: Seitentitel
+    parent: Elternseite
+    no_template: Sie haben keine Layouts zur Auswahl. Bitte legen Sie ein Layout an um eine neue Seite anlegen zu können
+    no_items_available: Sie haben keine Elemente in Ihrem Layout die befüllt werden könnten. Bitte wenden Sie sich an Ihren Administrator
+    edit_content: Seiteninhalt bearbeiten
+    edit: Seiteninformation bearbeiten
+  messages:
+    cannot_destroy_theme: Dieses Layout kann nur gelöscht werden, wenn es durch keine der Seiten referenziert wird. Ansonsten können wichtige Daten verloren gehen!
+  theme:
+    updated: Die Änderungen am Layout wurden gespeichert
+
+  activerecord:
+    models:
+      user: Benutzer
+    attributes: 
+      user: 
+        email: Email Adresse
+        password: Passwort
+        password_confirmation: Passort bestätigen
+        current_password: Derzeitiges Passwort
+    errors:
+      template: 
+        header: 
+          one: 1 Fehler ist aufgetreten
+          other: %{count} Fehler sind aufgetreten
+      models:
+        user:
+          attributes:
+            email:
+              blank: darf nicht leer sein!
+            password:
+              blank: darf nicht leer sein!
+              confirmation: und Passwort bestätigen stimmen nicht überein!
+              too_short: ist zu kurz! Es muss mindestens 4 und maximal 20 Zeichen beinhalten!
+            reset_password_token:
+              blank: '-> Benutzen Sie bitte den Link in der Mail!'
+            current_password:
+              blank: muss ausgefüllt werden!

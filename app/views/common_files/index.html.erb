@@ -1,0 +1,67 @@
+<%= stylesheet 'uploadify' %>
+<%= javascript 'jquery.uploadify', 'swfobject' %>
+<% session_key_name = Rails.application.config.session_options[:key] %>
+
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+	$('#upload_photo').uploadify({
+		uploader        : '/assets/uploadify.swf',
+		script          : '/upload_common_files',
+		cancelImg       : '/images/cancel.png',
+		multi           : true,
+		auto						: true,
+		buttonImg				: '/images/file_upload_button.png',
+		width						: 175,
+		wmode						: 'transparent',
+		onComplete      : function(event, data) { $.getScript(location.href) }, 	
+		scriptData      : {
+							'_http_accept': 'application/javascript',
+							'_method': 'put',
+							'<%= session_key_name %>' : encodeURIComponent('<%= u cookies[session_key_name] %>'),
+							'authenticity_token': encodeURIComponent('<%= u form_authenticity_token %>')
+						}
+	});
+	$("#all_cecked").live("click", function(){
+		$("input[type=checkbox]").attr("checked", $(this).attr("checked"));
+	});
+	
+
+	
+	$("form").live('submit', function(){
+		var checked = false;
+		$("input[type=checkbox]").each(function(){
+			if($(this).attr('checked') == true){
+				checked = true;
+			}
+		});
+		if(checked){
+			$.post($(this).attr("action"), $(this).serialize(), null, 'script');
+			$('#overlay').fadeIn("slow");
+		}
+		return false;
+	});
+	
+	
+});
+</script>
+
+
+<div id="image_upload_section">
+	<div id="upload_photo_container">
+		<p><%= t('file_upload.upload_common_files') %></p>
+		<div id="upload_photo">
+		</div>
+	</div>
+	<div id="image_upload_top_left">
+		<div class="info"><p><%= check_box_tag "all_cecked" %> Alle auswählen</p></div>
+	</div>
+	<%= form_tag destroy_selected_common_files_path, :method => :put do %>
+	<div id="overlay"></div>
+	<div id="my_photos">
+		<%= render 'common_files' %>
+	</div>
+	<div id="image_upload_bottom_left">
+		<%= submit_tag t('common.destroy_selected'), :class => 'button_one' %>
+	</div>
+	<% end %>
+</div>

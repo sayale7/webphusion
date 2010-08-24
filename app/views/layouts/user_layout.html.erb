@@ -1,0 +1,2 @@
+<% theme = Theme.find(@page.theme_id) rescue Theme.first %>
+<%=  raw(Liquid::Template.parse(theme.theme_content).render({'pages' => @pages, 'current_page' => @page},  :filters => [LiquidFilters])) %>

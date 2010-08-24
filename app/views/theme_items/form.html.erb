@@ -1,0 +1,14 @@
+<%= form_for @theme_item, :html => {:class => 'ajax_form'} do |f| %>
+	<%= f.hidden_field :theme_id, :value  => @theme.id %>
+	<p>
+		<%= f.label :name, t('theme_item.name') %>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :item_kind, t('theme_item.item_kind') %>
+		<%= f.select :item_kind, theme_item_kinds %>
+	</p>
+	<p>
+		<%= f.submit t('common.save') %>
+	</p>
+<% end %>

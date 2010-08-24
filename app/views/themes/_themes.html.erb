@@ -1,0 +1,9 @@
+<% if current_user %>
+<ul>
+<% current_user.themes.each do |theme| %>
+	<li>
+		<%= link_to theme.name, edit_theme_path(theme) %>
+	</li>
+<% end %>
+</ul>
+<% end %>

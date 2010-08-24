@@ -1,0 +1,9 @@
+one:
+  title: MyString
+  content: MyText
+  theme_id: 1
+
+two:
+  title: MyString
+  content: MyText
+  theme_id: 1

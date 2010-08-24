@@ -1,0 +1,24 @@
+<h2><%= t('authentication.edit_account') %></h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <p><%= f.label :email, t('common.email') %><br />
+  <%= f.text_field :email %></p>
+
+  <p><%= f.label :subdomain, t('common.subdomain') %><br />
+  <%= f.text_field :subdomain %></p>
+
+  <p><%= f.label :password, t('authentication.password') %> <i>(<%= t('authentication.edit_account_leave_password') %>)</i><br />
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation, t('authentication.password_confirmation') %><br />
+  <%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.label :current_password, t('authentication.password') %> <i>(<%= t('authentication.we_need_current_password') %>)</i><br />
+  <%= f.password_field :current_password %></p>
+
+  <p><%= f.submit t('common.update') %></p>
+<% end %>
+
+<%= link_to t('common.back'), :back %>

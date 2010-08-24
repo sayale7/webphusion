@@ -1,0 +1,4 @@
+$('#page_edit_form').html("<%= escape_javascript(render('/pages/form')) %>");
+$('#side_nav').html("<%= escape_javascript(render('/pages/items')) %>");
+$('#item_data_content_form').html("<%= escape_javascript(render('/item_datas/edit_content')) %>");
+tinyMCE.execCommand('mceAddControl', false, 'item_data_content_content');

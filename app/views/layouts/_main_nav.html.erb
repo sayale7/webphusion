@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+	<% if current_user.admin == true %>
+		<%= link_to t('navigation.layout_management'), themes_path %> 
+	<% end %>
+	<%= link_to t('navigation.page_management'), pages_path(:parent => 'none') %>  
+  <%= link_to t('authentication.account'), edit_user_registration_path %> 
+	<%= link_to t('authentication.logout'), destroy_user_session_path %> 
+	
+<% else %>
+  <%= link_to t('authentication.register'), new_user_registration_path %> or <%= link_to t('authentication.login'), new_user_session_path %>
+<% end %>
