@@ -4,7 +4,9 @@ class ThemeUpload < ActiveRecord::Base
 	belongs_to :theme
 	
 	has_attached_file :theme_file,
-										:url  => "/system/:class/:attachment/#{Theme.current_theme}/:basename.:extension",
-										:path => ":rails_root/public/system/:class/:attachment/#{Theme.current_theme}/:basename.:extension"
+										# :url  => "/system/:class/:attachment/#{Theme.current_theme}/:basename.:extension",
+										# :path => ":rails_root/public/system/:class/:attachment/#{Theme.current_theme}/:basename.:extension"
+										:url  => "/system/:class/:attachment/53/:basename.:extension",
+										:path => ":rails_root/public/system/:class/:attachment/53/:basename.:extension"
 																										
 end
