@@ -4,8 +4,8 @@ class ThemeUpload < ActiveRecord::Base
 	belongs_to :theme
 	debugger
 	has_attached_file :theme_file,
-										:url  => "/system/:class/:attachment/#{Thread.current[:current_theme]}/:basename.:extension",
-										:path => ":rails_root/public/system/:class/:attachment/#{Thread.current[:current_theme]}/:basename.:extension"
+										:url  => "/system/:class/:attachment/#{Thread.current[:current_page]}/:basename.:extension",
+										:path => ":rails_root/public/system/:class/:attachment/#{Thread.current[:current_page]}/:basename.:extension"
 										# :url  => "/system/:class/:attachment/53/:basename.:extension",
 										# :path => ":rails_root/public/system/:class/:attachment/53/:basename.:extension"
 																										
