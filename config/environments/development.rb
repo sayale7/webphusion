@@ -18,7 +18,7 @@ Easywebman::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-	Paperclip.options[:command_path] = "/opt/local/bin"
+	#Paperclip.options[:command_path] = "/opt/local/bin"
 	
 	config.active_support.deprecation = :log
   
