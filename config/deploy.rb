@@ -1,4 +1,4 @@
-set :application, "easywebman"
+set :application, "webphusion"
 set :deploy_to, "/var/rails/#{application}"
 #############################################################
 # Settings
@@ -12,7 +12,7 @@ set :use_sudo, true
 #############################################################
 
 set :user, "root"
-set :domain, "83.169.34.180"
+set :domain, "178.77.73.32"
 server domain, :app, :web
 role :db, domain, :primary => true
 set :runner, "root"
@@ -27,7 +27,7 @@ set :runner, "root"
 # set :checkout, "export"
 
 set :scm, "git"
-set :repository, "git://github.com/sayale7/easywebman.git"
+set :repository, "git://github.com/sayale7/webphusion"
 set :branch, "master"
 
 #############################################################
