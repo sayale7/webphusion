@@ -7,7 +7,7 @@
 		if($("#input_link").attr("src") == ''){
 			alert('Wählen Sie bitte zuerst ein Bild aus');
 		}else{
-			$('.tinymce').tinymce().execCommand('mceInsertContent',false, '<img src=/' + $("#input_link").attr("src") + '></img>');
+			$('.tinymce').tinymce().execCommand('mceInsertContent',false, '<img src=' + $("#input_link").attr("src") + '></img>');
 		}
 	});
 
