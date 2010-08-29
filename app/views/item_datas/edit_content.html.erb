@@ -1,17 +1,7 @@
 <%# render '/shared/tiny' %>
 <div class="image_manager"><img src="", style="display:none;" id="input_link"></img> 
 <%= link_to t('file_upload.upload_common_files'), common_files_url, :class => 'assets_iframe' %> |
-<%= link_to t('file_upload.upload'), assets_url, :class => 'assets_iframe' %> | <a href="javascript:;" id="insert_content">Bild einsetzen</a>
-<script type="text/javascript" charset="utf-8">
-	$('#insert_content').live('click', function(){
-		if($("#input_link").attr("src") == ''){
-			alert('Wählen Sie bitte zuerst ein Bild aus');
-		}else{
-			$('.tinymce').tinymce().execCommand('mceInsertContent',false, '<img src=' + $("#input_link").attr("src") + '></img>');
-		}
-	});
-
-</script>
+<%= link_to t('file_upload.upload'), assets_url, :class => 'assets_iframe' %>
 </div>
 <div id="item_data_content_form", class="editor_content">
 	<%= render '/item_datas/edit_content' %>
@@ -19,6 +9,21 @@
 <% if @theme_item  %>
 	<p><%= link_to t('file_upload.collection_uploads'), assets_url(:collection_id => @theme_item.id), :class => 'assets_iframe' %></p>
 	<% Asset.find_all_by_collection_id(@theme_item.id).each do |asset| %>
-		<div class="left"><%= link_to image_tag(asset.image.url(:thumb)), asset.image.url, :class => 'group' %></div>
+		<div class="left"><%= link_to image_tag(asset.image.url(:thumb), :width => '55'), asset.image.url, :class => 'single_image' %></div>
 	<% end %>
+<% end %>
+
+
+<% if false %>
+	 | <a href="javascript:;" id="insert_content">Bild einsetzen</a>
+	<script type="text/javascript" charset="utf-8">
+		$('#insert_content').live('click', function(){
+			if($("#input_link").attr("src") == ''){
+				alert('Wählen Sie bitte zuerst ein Bild aus');
+			}else{
+				$('.tinymce').tinymce().execCommand('mceInsertContent',false, '<img src=' + $("#input_link").attr("src") + '></img>');
+			}
+		});
+
+	</script>
 <% end %>

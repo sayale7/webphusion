@@ -1,27 +1,28 @@
 <script type="text/javascript" charset="utf-8">
-$(document).ready(function() {	
-	$(".my_photo_row").each(function(){
-		if($(this).attr("data-number")%2==0){
-			$(this).css("background", "#EDF3F6").find('img').css('display', 'none').fadeIn(2000);
-		}else{
-			$(this).css("background", "#D8E8FF").find('img').css('display', 'none').fadeIn(2000);
-		}
-	});
-	
-	$('.copy_paste').live('click', function(){
-			var link = $(this).attr('href').substring(0, $(this).attr('href').length - 11);
-			$(window.parent.document).find('#input_link').attr('src', link);
-			parent.$.fancybox.close();
-			return false;
-	});
-});
+// $(document).ready(function() {	
+// 	$(".my_photo_row").each(function(){
+// 		if($(this).attr("data-number")%2==0){
+// 			$(this).css("background", "#EDF3F6").find('img').css('display', 'none').fadeIn(2000);
+// 		}else{
+// 			$(this).css("background", "#D8E8FF").find('img').css('display', 'none').fadeIn(2000);
+// 		}
+// 	});
+// 	
+// 	$('.copy_paste').live('click', function(){
+// 			var link = $(this).attr('href').substring(0, $(this).attr('href').length - 11);
+// 			$(window.parent.document).find('#input_link').attr('src', link);
+// 			parent.$.fancybox.close();
+// 			return false;
+// 	});
+// });
 </script>
 
 <% @common_files.each_with_index do |common_file, index| %>
 <div class="my_photo_row" data-number="<%= index %>">
 	<div class="info"><p><%= check_box_tag "common_file_ids[]", common_file.id %></p></div>
 	<div class="image"><%= image_tag('/images/movie.jpg', :width => 55, :height => 45) %></div>
-	<div class="info" style="width:200px; overfow:scroll;"><p><%= common_file.asset_file.url.to_s[0, common_file.asset_file.url.to_s.length - 11] %></p></div>
+	<div class="info" style="width:100px; overfow:scroll;"><p><%= common_file.asset_file.original_filename %></p></div>
 	<div class="info"><p>(<%= common_file.asset_file.size / 1000 %> kB / <%= common_file.created_at.strftime('%d.%m.%y') %>)</p></div>
+	<div class="info"><p><%= raw clippy(common_file.asset_file.url.to_s[0, common_file.asset_file.url.to_s.length - 11]) %></p></div>
 </div>
 <% end %>

@@ -18,7 +18,7 @@ class Asset < ActiveRecord::Base
 	# 	trans << "\\( +clone -flip \\) -compose Multiply -composite "
 	# 	trans << "\\( +clone -flop \\) -compose Multiply -composite "
 	# 	trans << "\\) +matte -compose CopyOpacity -composite "
-	# end
+	# end,
 	
 	def image_path
 		return self.image.url
