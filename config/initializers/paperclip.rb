@@ -1,3 +1,3 @@
 Paperclip.interpolates :theme_id do |attachment, style|
-  attachment.instance.username
+  attachment.instance.theme_id
 end
