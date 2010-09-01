@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100823192758) do
+ActiveRecord::Schema.define(:version => 20100901172642) do
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20100823192758) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "collection_id"
+    t.text     "description"
   end
 
   create_table "common_files", :force => true do |t|
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20100823192758) do
     t.boolean  "active",     :default => false
     t.integer  "parent_id"
     t.string   "name"
+    t.integer  "position"
   end
 
   create_table "theme_items", :force => true do |t|

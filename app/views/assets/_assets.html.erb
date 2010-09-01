@@ -20,7 +20,7 @@ $(document).ready(function() {
 <% @assets.each_with_index do |asset, index| %>
 <div class="my_photo_row" data-number="<%= index %>">
 	<div class="info"><p><%= check_box_tag "asset_ids[]", asset.id %></p></div>
-	<div class="image"><%= image_tag(asset.image.url(:thumb), :width => '55') %></div>
+	<div class="image"><%= image_tag(asset.image.url(:thumb)) %></div>
 	<div class="info"><p><%=  asset.image.original_filename %></p></div>
 	<div class="info"><p>(<%= asset.image.size / 1000 %> kB / <%= asset.created_at.strftime('%d.%m.%y') %>)</p></div>
 	<div class="info"><p><%= raw clippy(asset.image.url.to_s[0, asset.image.url.to_s.length - 11]) %></p></div>

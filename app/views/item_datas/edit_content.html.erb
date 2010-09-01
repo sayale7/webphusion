@@ -1,7 +1,7 @@
 <%# render '/shared/tiny' %>
 <div class="image_manager"><img src="", style="display:none;" id="input_link"></img> 
-<%= link_to t('file_upload.upload_common_files'), common_files_url, :class => 'assets_iframe' %> |
-<%= link_to t('file_upload.upload'), assets_url, :class => 'assets_iframe' %>
+<%= link_to t('file_upload.upload_common_files'), common_files_url, :class => 'assets_iframe' %> 
+<%# link_to t('file_upload.upload'), assets_url, :class => 'assets_iframe' %>
 </div>
 <div id="item_data_content_form", class="editor_content">
 	<%= render '/item_datas/edit_content' %>
@@ -9,7 +9,7 @@
 <% if @theme_item  %>
 	<p><%= link_to t('file_upload.collection_uploads'), assets_url(:collection_id => @theme_item.id), :class => 'assets_iframe' %></p>
 	<% Asset.find_all_by_collection_id(@theme_item.id).each do |asset| %>
-		<div class="left"><%= link_to image_tag(asset.image.url(:thumb), :width => '55'), asset.image.url, :class => 'single_image' %></div>
+		<div class="left"><%= link_to image_tag(asset.image.url(:thumb)), asset.image.url, :class => 'single_image' %></div>
 	<% end %>
 <% end %>
 
