@@ -38,8 +38,13 @@
 					return false;
 				});
 
-				$("a.ajax").fancybox({
-					'autoScale'	 : true
+				$("a.ajax").live('click', function(){
+					$(this).fancybox({
+						'autoScale'	 : true,
+						'titleShow' : false
+					});
+					$(this).click();
+					return false;
 				});
 
 				/* Apply fancybox to multiple items */

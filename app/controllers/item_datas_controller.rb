@@ -21,6 +21,9 @@ class ItemDatasController < ApplicationController
 		else
 			@page = Page.find(Item.find(ItemDataContent.find(params[:item_id]).item_id).page_id)
 			@theme_item = @page.theme.theme_items.find_by_item_kind('Bilder')
+			unless @theme_item.nil?
+				@item = Item.find_by_page_id_and_theme_item_id(@page.id, @theme_item.id)
+			end
 		end
 		render :layout => '/layouts/pages'
 	end

@@ -1,0 +1,4 @@
+<%= form_for @asset, :remote => false do |f| %>
+	<%= f.text_area :description %><br/>
+	<%= f.submit t('common.save') %>
+<% end %>

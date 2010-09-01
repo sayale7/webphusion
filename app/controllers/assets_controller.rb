@@ -43,6 +43,18 @@ class AssetsController < ApplicationController
 		end
 	end
 	
+	
+	def edit
+		@asset = Asset.find(params[:id])
+		render :layout => 'popup'
+	end
+	
+	def update
+		asset = Asset.find(params[:id])
+		asset.update_attributes(params[:asset])
+		redirect_to "/edit_content?item_id=#{ItemDataContent.find_all_by_item_id(asset.collection_id).first.id})"
+	end
+	
 	private 
 	
 	def coerce(params)

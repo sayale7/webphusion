@@ -1,6 +1,7 @@
 Easywebman::Application.routes.draw do |map|
   
   devise_for :users, :path_names => { :sign_up => "register" }
+
 	resources :assets do
 	  collection do
 	    put :destroy_selected
