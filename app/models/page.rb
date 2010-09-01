@@ -33,7 +33,7 @@ class Page < ActiveRecord::Base
 	end
 	
 	def gallery
-		return Asset.find_all_by_collection_id(self.theme.theme_items.find_by_item_kind('Bilder').id) rescue nil
+		return Asset.find_all_by_collection_id(Item.find_by_page_id_and_theme_item_id(self.id, self.theme.theme_items.find_by_item_kind('Bilder').id).id) rescue nil
 	end
 	
 	def update_items_for_theme
