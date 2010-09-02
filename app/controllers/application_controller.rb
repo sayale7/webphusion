@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   rescue_from ActionController::RoutingError, :with => :route_not_found
   rescue_from ActionController::MethodNotAllowed, :with => :invalid_method
-	before_filter  :set_current_theme_for_model, :set_current_page_for_show, :set_locale
+	before_filter :set_current_theme_for_model, :set_current_page_for_show, :set_locale
   
   include UrlHelper
   protect_from_forgery
