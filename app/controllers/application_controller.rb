@@ -60,7 +60,13 @@ class ApplicationController < ActionController::Base
 			unless params[:id].nil?
 				Page.current_page = params[:id] rescue nil
 			else
-				Page.current_page = Website.find_by_user_id(User.find_by_domain(request.domain.to_s).id).start_page_id
+				user = User.find_by_domain(request.domain.to_s).id
+				unless user.nil?
+					website = Website.find_by_user_id(user.id)
+					unless website.nil?
+						Page.current_page = website.start_page_id
+					end
+				end
 			end
 		end
 	end
