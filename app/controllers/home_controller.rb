@@ -15,7 +15,7 @@ class HomeController < ApplicationController
 			unless page.to_s.eql?('')
 				redirect_to "http://#{request.domain}/pages/#{page}"
 			else
-				redirect_to "http://webphusion.com?#{page}"
+				redirect_to "http://webphusion.com?#{user}"
 			end
 		end
 	end
