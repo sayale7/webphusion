@@ -6,10 +6,11 @@ class HomeController < ApplicationController
 		unless request.url.include?('webphusion.com')
 			user = User.find_by_domain(request.domain.to_s).id
 			unless user.nil?
-				website = Website.find_by_user_id(user.id)
-				unless website.nil?
-					redirect_to "http://#{request.domain}/pages/#{website.start_page_id}"
-				end
+				redirect_to "http://#{request.domain}/pages/#{Website.find_by_user_id(user.id).id}"
+				#website = Website.find_by_user_id(user.id)
+				# unless website.nil?
+				# 					redirect_to "http://#{request.domain}/pages/#{website.start_page_id}"
+				# 				end
 			end
 		end
 	end
