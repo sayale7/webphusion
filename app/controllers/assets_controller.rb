@@ -11,7 +11,7 @@ class AssetsController < ApplicationController
 			@assets = current_user.assets.find_all_by_collection_id(nil)			
 			@collection_id = nil
 		end
-		render :layout => '/layouts/popup', :template => '/assets/index'
+		render :layout => '/layouts/iframe_popup', :template => '/assets/index'
   end
 
 	def upload_assets

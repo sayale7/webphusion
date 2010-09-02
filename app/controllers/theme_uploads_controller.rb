@@ -6,7 +6,7 @@ class ThemeUploadsController < ApplicationController
 		@delete_hash = Hash.new
 		@theme = Theme.find(params[:theme_id])
 		@theme_uploads = @theme.theme_uploads
-		render :layout => '/layouts/popup'
+		render :layout => '/layouts/iframe_popup'
 	end
 
 	def upload_theme_files

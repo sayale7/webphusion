@@ -5,7 +5,7 @@ class CommonFilesController < ApplicationController
 	def index
 		@delete_hash = Hash.new
 		@common_files = current_user.common_files
-		render :layout => '/layouts/popup'
+		render :layout => '/layouts/iframe_popup'
 	end
 
 	def upload_common_files

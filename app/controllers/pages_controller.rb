@@ -21,8 +21,18 @@ class PagesController < ApplicationController
   
   def show
 		if request.subdomains.empty?
-    	@page = Page.find(params[:id])
-			@pages = Page.find_all_by_website_id_and_active_and_parent_id(current_user.id, true, nil)
+			unless request.url.include?('webphusion.com')
+				domain_string = request.domain.to_s
+				unless params[:id].nil?
+					@page = User.find_by_domain(domain_string).pages.find(params[:id])
+				else
+					@page = User.find_by_domain(domain_string).pages.first
+				end
+				@pages = User.find_by_domain(domain_string).pages.find_all_by_active_and_parent_id(true, nil)
+			else
+	    	@page = Page.find(params[:id])
+				@pages = Page.find_all_by_website_id_and_active_and_parent_id(current_user.id, true, nil)
+			end
 		else
 			subdomain_string = request.subdomains.last.to_s
 			unless params[:id].nil?

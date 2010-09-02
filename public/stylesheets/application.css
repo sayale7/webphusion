@@ -314,3 +314,6 @@ input[type=text], input[type=password]{
 	float:left;
 	padding:5px;
 }
+#code{
+	height:500px;
+}

@@ -17,14 +17,18 @@
 					'height'	:	700,
 					'type'		: 'iframe'	
 				});
-				
-				$(".assets_iframe").fancybox({ 
-					'width'                 : 780, 
-					'height'                : 550,
-					'type'                  : 'iframe' 
-				});
-				/* Using custom settings */
 
+				/* Using custom settings */
+				$("a.assets_iframe").live('click', function(){
+					$(this).fancybox({
+						'width'                 : 780, 
+						'height'                : 550,
+						'type'                  : 'iframe'
+					});
+					$(this).click();
+					return false;
+				});
+				
 				$("a.ajax").live('click', function(){
 					$(this).fancybox({
 						'autoScale'	 : true
