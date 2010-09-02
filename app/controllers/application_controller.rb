@@ -15,8 +15,19 @@ class ApplicationController < ActionController::Base
 	end
 
 	def set_current_theme_for_model   
-		if request.subdomains.empty?
-			Theme.current_theme = params[:theme_id] rescue nil
+		if request.subdomains.empty? or request.subdomains.first.to_s.length == 2
+			user = User.find_by_domain(request.domain.to_s)
+			unless user.nil?
+				if params[:id].nil?
+					website = Website.find_by_user_id(user.id)
+					page = Page.find(website.start_page_id)
+					Theme.current_theme = Theme.find(page.theme_id).id
+				else
+					page = Page.find(params[:id])
+					Theme.current_theme = Theme.find(page.theme_id).id
+				end
+			end
+			#Theme.current_theme = params[:theme_id] rescue nil
 		else
 			user = User.find_by_subdomain(request.subdomains.last.to_s)
 			unless user.nil?
