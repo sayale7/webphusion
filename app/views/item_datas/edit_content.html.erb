@@ -9,7 +9,7 @@
 <% if @theme_item  %>
 	<p><%= link_to t('file_upload.collection_uploads'), assets_url(:collection_id => @item.id), :class => 'assets_iframe' %></p>
 	<% Asset.find_all_by_collection_id(@item.id).each do |asset| %>
-		<div class="left"><%= link_to image_tag(asset.image.url(:thumb) ), edit_asset_path(asset), :class => 'ajax'%>
+		<div class="left"><%= link_to image_tag(asset.image.url(:thumb) ), edit_asset_path(asset)%>
 		<%# link_to image_tag(asset.image.url(:thumb)), asset.image.url, :class => 'single_image', :rel => 'group' %></div>
 	<% end %>
 <% end %>

@@ -46,13 +46,13 @@ class AssetsController < ApplicationController
 	
 	def edit
 		@asset = Asset.find(params[:id])
-		render :layout => 'popup'
+		#render :layout => 'popup'
 	end
 	
 	def update
 		asset = Asset.find(params[:id])
 		asset.update_attributes(params[:asset])
-		redirect_to "/edit_content?item_id=#{ItemDataContent.find_all_by_item_id(asset.collection_id).first.id})"
+		redirect_to "/edit_content?item_id=#{ItemDataContent.find_all_by_item_id(asset.collection_id).first.id}"
 	end
 	
 	private 

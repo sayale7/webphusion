@@ -38,6 +38,17 @@
 					return false;
 				});
 
+				$(".edit_assets_iframe").live('click', function(){
+					$(this).fancybox({ 
+						'width'                 : 470, 
+						'height'                : 320, 
+						'type'                  : 'iframe', 
+						'titleShow' : false
+					});
+					$(this).click();
+					return false;
+				});
+
 				$("a.ajax").live('click', function(){
 					$(this).fancybox({
 						'autoScale'	 : true,
