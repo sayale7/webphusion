@@ -1,12 +1,18 @@
 class ApplicationController < ActionController::Base
   rescue_from ActionController::RoutingError, :with => :route_not_found
   rescue_from ActionController::MethodNotAllowed, :with => :invalid_method
-	before_filter :set_current_theme_for_model, :set_current_page_for_show, :set_locale
+	before_filter :get_domain, :set_current_theme_for_model, :set_current_page_for_show, :set_locale
   
   include UrlHelper
   protect_from_forgery
   layout 'application'
 	helper_method :get_locale
+	
+	def get_domain
+		unless request.url.include?('webphusion.com')
+			redirect_to "http://webphusion.com"
+		end
+	end
 
 	def set_current_theme_for_model   
 		if request.subdomains.empty?
