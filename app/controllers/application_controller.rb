@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def set_current_page_for_show
-		if !request.subdomains.empty? or request.subdomains.first.to_s.length != 2
+		if !request.subdomains.empty? and request.subdomains.first.to_s.length != 2
 			unless params[:id].nil?
 				Page.current_page = params[:id] rescue nil
 			else
