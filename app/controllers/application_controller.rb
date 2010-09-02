@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 	
 	def get_domain
 		unless request.url.include?('webphusion.com')
-			redirect_to "http://webphusion.com"
+			redirect_to "http://#{request.domain}/pages/86"
 		end
 	end
 
