@@ -21,7 +21,6 @@ class PagesController < ApplicationController
   
   def show
 		if request.subdomains.empty?
-			debugger
 			unless request.url.include?('webphusion.com')
 				domain_string = request.domain.to_s
 				unless params[:id].nil?
