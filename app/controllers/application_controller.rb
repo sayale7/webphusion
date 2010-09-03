@@ -50,21 +50,23 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def set_current_page_for_show
-		if !request.subdomains.empty? and request.subdomains.first.to_s.length != 2
-			unless params[:id].nil?
-				Page.current_page = params[:id] rescue nil
+		unless request.port.to_s.eql?('3000')
+			if !request.subdomains.empty? and request.subdomains.first.to_s.length != 2
+				unless params[:id].nil?
+					Page.current_page = params[:id] rescue nil
+				else
+					Page.current_page = Website.find_by_user_id(User.find_by_subdomain(request.subdomains.last.to_s).id).start_page_id
+				end
 			else
-				Page.current_page = Website.find_by_user_id(User.find_by_subdomain(request.subdomains.last.to_s).id).start_page_id
-			end
-		else
-			unless params[:id].nil?
-				Page.current_page = params[:id] rescue nil
-			else
-				user = User.find_by_domain(request.domain.to_s).id
-				unless user.nil?
-					website = Website.find_by_user_id(user.id)
-					unless website.nil?
-						Page.current_page = website.start_page_id
+				unless params[:id].nil?
+					Page.current_page = params[:id] rescue nil
+				else
+					user = User.find_by_domain(request.domain.to_s).id
+					unless user.nil?
+						website = Website.find_by_user_id(user.id)
+						unless website.nil?
+							Page.current_page = website.start_page_id
+						end
 					end
 				end
 			end

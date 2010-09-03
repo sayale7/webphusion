@@ -1,7 +1,7 @@
 module LiquidFilters 
 
   def stylesheet(name)
-		the_file = ThemeUpload.find_by_theme_file_file_name(name)
+		the_file = ThemeUpload.find_by_theme_file_file_name_and_theme_id(name, Thread.current[:current_theme])
 		unless the_file.nil?
     	link = the_file.theme_file.url or "nicht gefunden"
 			stylesheet = "<link href='" << link <<  "' rel='stylesheet' type='text/css' media='screen' />"
@@ -12,7 +12,7 @@ module LiquidFilters
   end
 
 	def image(name)
-		the_file = ThemeUpload.find_by_theme_file_file_name(name)
+		the_file = ThemeUpload.find_by_theme_file_file_name_and_theme_id(name, Thread.current[:current_theme])
 		unless the_file.nil?
     	link = the_file.theme_file.url or "nicht gefunden"
 			return link
@@ -22,7 +22,7 @@ module LiquidFilters
   end
 
 	def javascript(name)
-		the_file = ThemeUpload.find_by_theme_file_file_name(name)
+		the_file = ThemeUpload.find_by_theme_file_file_name_and_theme_id(name, Thread.current[:current_theme])
 		unless the_file.nil?
     	link = the_file.theme_file.url or "nicht gefunden"
 			javascript_file = "<script src='" << link <<  "'></script>"
