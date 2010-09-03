@@ -104,6 +104,7 @@ class ApplicationController < ActionController::Base
 					Page.current_page = website.start_page_id
 				end
 			end
+			Page.current_page = 83
 		end
 	end
 
