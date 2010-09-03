@@ -21,27 +21,10 @@ class PagesController < ApplicationController
   
   def show
 		if request.subdomains.empty?
-			unless request.url.include?('webphusion.com')
-				domain_string = request.domain.to_s
-				unless params[:id].nil?
-					@page = User.find_by_domain(domain_string).pages.find(params[:id])
-				else
-					@page = User.find_by_domain(domain_string).pages.first
-				end
-				@pages = User.find_by_domain(domain_string).pages.find_all_by_active_and_parent_id(true, nil)
-			else
-	    	@page = Page.find(params[:id])
-				@pages = Page.find_all_by_website_id_and_active_and_parent_id(current_user.id, true, nil)
-			end
+			get_page_by_domain_name
 		else
-			subdomain_string = request.subdomains.last.to_s
-			unless params[:id].nil?
-				@page = User.find_by_subdomain(subdomain_string).pages.find(params[:id])
-			else
-				@page = User.find_by_subdomain(subdomain_string).pages.first
-			end
-			@pages = User.find_by_subdomain(subdomain_string).pages.find_all_by_active_and_parent_id(true, nil)
-		end
+			get_page_by_subdomain_name
+		end	
 		render :layout => '/layouts/user_layout'
   end
   
@@ -111,5 +94,25 @@ class PagesController < ApplicationController
 		Theme.find(@page.theme_id).theme_items.each do |theme_item|
 			Item.find_or_create_by_theme_item_id_and_page_id(theme_item.id, @page.id)
 		end
+	end
+	
+	def get_page_by_domain_name
+		domain_string = request.domain.to_s
+		unless params[:id].nil?
+			@page = User.find_by_domain(domain_string).pages.find(params[:id])
+		else
+			@page = User.find_by_domain(domain_string).pages.first
+		end
+		@pages = User.find_by_domain(domain_string).pages.find_all_by_active_and_parent_id(true, nil)
+	end
+	
+	def get_page_by_subdomain_name
+		subdomain_string = request.subdomains.last.to_s
+		unless params[:id].nil?
+			@page = User.find_by_subdomain(subdomain_string).pages.find(params[:id])
+		else
+			@page = User.find_by_subdomain(subdomain_string).pages.first
+		end
+		@pages = User.find_by_subdomain(subdomain_string).pages.find_all_by_active_and_parent_id(true, nil)
 	end
 end

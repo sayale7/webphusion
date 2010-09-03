@@ -38,4 +38,5 @@ module LiquidFilters
 		item = Item.find_by_theme_item_id_and_page_id_and_active(theme_item.id, page.id, true)
 		return  ItemDataContent.find_by_locale_and_item_id(Thread.current[:current_locale].to_s, item.id).content rescue " "
 	end
+	
 end

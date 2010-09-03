@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 	has_many :pages, :foreign_key => 'website_id'
 	
 	validates_uniqueness_of :subdomain
+	validates_length_of :subdomain, :minimum => 3
 	
 	
 	# def self.current_user_for_model
