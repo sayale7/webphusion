@@ -40,26 +40,6 @@ class ApplicationController < ActionController::Base
 		Page.current_locale = I18n.locale
 	end
 	
-  private
-	
-	def get_locale
-     I18n.locale
-  end
-  
-  # rescue_from ActiveRecord::RecordNotFound do |exception|
-  #   flash[:error] = "Daten konnten nicht gefunden werden"
-  #   redirect_to root_url
-  # end
-  
-  def route_not_found
-    render :text => 'Na, nach was schauen Sie denn?', :status => :not_found
-  end
-  
-  def invalid_method
-    message = "Now, did your mom tell you to do that ?"
-    render :text => message, :status => :method_not_allowed
-  end
-  
 	def get_theme_by_domain_name
 		user = User.find_by_domain(request.domain.to_s)
 		unless user.nil?
@@ -115,5 +95,27 @@ class ApplicationController < ActionController::Base
 			Page.current_page = Website.find_by_user_id(User.find_by_subdomain(request.subdomains.last.to_s).id).start_page_id
 		end
 	end
+	
+  private
+	
+	def get_locale
+     I18n.locale
+  end
+  
+  # rescue_from ActiveRecord::RecordNotFound do |exception|
+  #   flash[:error] = "Daten konnten nicht gefunden werden"
+  #   redirect_to root_url
+  # end
+  
+  def route_not_found
+    render :text => 'Na, nach was schauen Sie denn?', :status => :not_found
+  end
+  
+  def invalid_method
+    message = "Now, did your mom tell you to do that ?"
+    render :text => message, :status => :method_not_allowed
+  end
+  
+
   
 end
