@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 		elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and !(request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
 			get_page_by_domain_name
 		elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and (request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
-			
+			83
 		else
 			get_page_by_subdomain
 		end
@@ -94,18 +94,17 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def get_page_by_domain_name
-		Page.current_page = 83
-		# unless params[:id].nil?
-		# 			Page.current_page = params[:id] rescue nil
-		# 		else
-		# 			user = User.find_by_domain(request.domain.to_s).id
-		# 			unless user.nil?
-		# 				website = Website.find_by_user_id(user.id)
-		# 				unless website.nil?
-		# 					Page.current_page = website.start_page_id
-		# 				end
-		# 			end
-		# 		end
+		unless params[:id].nil?
+			Page.current_page = params[:id] rescue nil
+		else
+			user = User.find_by_domain(request.domain.to_s).id
+			unless user.nil?
+				website = Website.find_by_user_id(user.id)
+				unless website.nil?
+					Page.current_page = website.start_page_id
+				end
+			end
+		end
 	end
 
 	def get_page_by_subdomain

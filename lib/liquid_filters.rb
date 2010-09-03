@@ -33,7 +33,7 @@ module LiquidFilters
   end
 
 	def item_content(name)
-		page = Page.find(83)#Thread.current[:current_page])
+		page = Page.find(Thread.current[:current_page])
 		theme_item = ThemeItem.find_by_name_and_theme_id(name, Theme.find(page.theme_id))
 		item = Item.find_by_theme_item_id_and_page_id_and_active(theme_item.id, page.id, true)
 		return  ItemDataContent.find_by_locale_and_item_id(Thread.current[:current_locale].to_s, item.id).content rescue " "
