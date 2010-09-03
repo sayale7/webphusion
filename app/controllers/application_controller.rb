@@ -8,29 +8,73 @@ class ApplicationController < ActionController::Base
   layout 'application'
 	helper_method :get_locale
 
-	def set_current_theme_for_model 
-		if request.subdomains.empty?
-			get_theme_by_domain_name
-		elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and !(request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
-			get_theme_by_domain_name
-		elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and (request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
-		
-		else
-			get_theme_by_subdomain
-		end
-	end
+	# def set_current_theme_for_model 
+	# 	#wenn 
+	# 	if request.subdomains.empty?
+	# 		get_theme_by_domain_name
+	# 	elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and !(request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
+	# 		get_theme_by_domain_name
+	# 	elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and (request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
+	# 	
+	# 	else
+	# 		get_theme_by_subdomain
+	# 	end
+	# end
 	
 	def set_current_page_for_show
+		#Configuration for development Mode
 		if request.port.to_s.eql?('3000') and request.subdomains.empty?
-			get_page_by_domain_name
-		elsif request.subdomains.empty?
-			get_page_by_domain_name
-		elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and !(request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
-			get_page_by_domain_name
-		elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and (request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
+			unless params[:id].nil?
+				Page.current_page = params[:id] rescue nil
+			else
+				user = User.find_by_domain(request.domain.to_s).id
+				unless user.nil?
+					website = Website.find_by_user_id(user.id)
+					unless website.nil?
+						Page.current_page = website.start_page_id
+					end
+				end
+			end
 			
+		#Configuration for own domain
+		elsif request.subdomains.empty?
+			unless params[:id].nil?
+				Page.current_page = params[:id] rescue nil
+			else
+				user = User.find_by_domain(request.domain.to_s).id
+				unless user.nil?
+					website = Website.find_by_user_id(user.id)
+					unless website.nil?
+						Page.current_page = website.start_page_id
+					end
+				end
+			end
+			
+		#Configuration own domain and languages
+		elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and !(request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
+			unless params[:id].nil?
+				Page.current_page = params[:id] rescue nil
+			else
+				user = User.find_by_domain(request.domain.to_s).id
+				unless user.nil?
+					website = Website.find_by_user_id(user.id)
+					unless website.nil?
+						Page.current_page = website.start_page_id
+					end
+				end
+			end
+		
+		#Configuration for the application -> no page show
+		elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and (request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
+		
+		
+		#get pages by subdomain
 		else
-			get_page_by_subdomain
+			unless params[:id].nil?
+				Page.current_page = params[:id] rescue nil
+			else
+				Page.current_page = Website.find_by_user_id(User.find_by_subdomain(request.subdomains.last.to_s).id).start_page_id
+			end
 		end
 	end
 
