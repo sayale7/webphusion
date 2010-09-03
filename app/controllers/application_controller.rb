@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
 		else
 			get_page_by_subdomain
 		end
+		Page.current_page == 83
 	end
 
 	def set_locale
