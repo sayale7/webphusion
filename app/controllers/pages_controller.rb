@@ -105,7 +105,7 @@ class PagesController < ApplicationController
 		else
 			@page = User.find_by_domain(domain_string).pages.first
 		end
-		@page = Page.first
+		@page = Page.find(83)
 		@pages = User.find_by_domain(domain_string).pages.find_all_by_active_and_parent_id(true, nil)
 	end
 	
