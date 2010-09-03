@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 		elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and !(request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
 			get_page_by_domain_name
 		elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and (request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
-			83
+			
 		else
 			get_page_by_subdomain
 		end
