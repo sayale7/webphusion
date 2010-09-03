@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
 	
 	def set_current_page_for_show
 		if request.port.to_s.eql?('3000') and request.subdomains.empty?
+			get_page_by_domain_name
 		elsif request.subdomains.empty?
 			get_page_by_domain_name
 		elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and !(request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
@@ -94,17 +95,17 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def get_page_by_domain_name
-		#unless params[:id].nil?
-			Page.current_page = params[:id] rescue 83
-		# else
-		# 			user = User.find_by_domain(request.domain.to_s).id
-		# 			unless user.nil?
-		# 				website = Website.find_by_user_id(user.id)
-		# 				unless website.nil?
-		# 					Page.current_page = website.start_page_id
-		# 				end
-		# 			end
-		# 		end
+		unless params[:id].nil?
+			Page.current_page = params[:id] rescue nil
+		else
+			user = User.find_by_domain(request.domain.to_s).id
+			unless user.nil?
+				website = Website.find_by_user_id(user.id)
+				unless website.nil?
+					Page.current_page = website.start_page_id
+				end
+			end
+		end
 	end
 
 	def get_page_by_subdomain
