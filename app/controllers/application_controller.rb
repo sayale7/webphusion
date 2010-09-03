@@ -1,25 +1,25 @@
 class ApplicationController < ActionController::Base
   rescue_from ActionController::RoutingError, :with => :route_not_found
   rescue_from ActionController::MethodNotAllowed, :with => :invalid_method
-	before_filter  :set_current_page_for_show, :set_locale
+	before_filter :set_current_theme_for_model, :set_current_page_for_show, :set_locale
   
   include UrlHelper
   protect_from_forgery
   layout 'application'
 	helper_method :get_locale
 
-	# def set_current_theme_for_model 
-	# 	#wenn 
-	# 	if request.subdomains.empty?
-	# 		get_theme_by_domain_name
-	# 	elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and !(request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
-	# 		get_theme_by_domain_name
-	# 	elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and (request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
-	# 	
-	# 	else
-	# 		get_theme_by_subdomain
-	# 	end
-	# end
+	def set_current_theme_for_model 
+		#wenn 
+		if request.subdomains.empty?
+			get_theme_by_domain_name
+		elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and !(request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
+			get_theme_by_domain_name
+		elsif request.subdomains.size == 1 and request.subdomains.first.to_s.length == 2 and (request.domain.to_s.eql?('webphusion.com') or request.domain.to_s.eql?('lvh.me'))
+		
+		else
+			get_theme_by_subdomain
+		end
+	end
 	
 	def set_current_page_for_show
 		#Configuration for development Mode
