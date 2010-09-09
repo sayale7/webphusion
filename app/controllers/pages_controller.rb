@@ -22,7 +22,7 @@ class PagesController < ApplicationController
   def show
 		if request.subdomains.empty?
 			get_page_by_domain_name
-		elsif !request.domain.to_s.eql?('webphusion.com')
+		elsif !request.domain.to_s.eql?('webphusion.com') and !request.domain.to_s.eql?('lvh.me')
 			get_page_by_domain_name
 		else
 			get_page_by_subdomain_name

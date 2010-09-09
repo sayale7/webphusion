@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 			unless params[:id].nil?
 				Page.current_page = params[:id] rescue nil
 			else
-				user = User.find_by_domain(request.domain.to_s).id
+				user = User.find_by_domain(request.domain.to_s)
 				unless user.nil?
 					website = Website.find_by_user_id(user.id)
 					unless website.nil?

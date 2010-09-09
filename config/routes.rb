@@ -39,10 +39,13 @@ Easywebman::Application.routes.draw do |map|
 	match "/remove_item_from_page" =>  "pages#remove_item_from_page"
 	
 	constraints(Subdomain) do  
-    match '/' => 'pages#show'    
+    match '/' => 'pages#show'
   end
-  
-	resources :pages
+
+  scope "(:locale)", :locale => /en|de/ do
+		resources :pages
+		resources :home
+	end
 
   root :to => "home#index"
 end
