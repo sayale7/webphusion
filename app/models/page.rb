@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
 	
-	liquid_methods :id, :name, :title, :parent_id, :sub_pages, :gallery
+	liquid_methods :page_url, :name, :title, :parent_id, :sub_pages, :gallery
 	
 	belongs_to :user
 	belongs_to :theme
@@ -30,6 +30,10 @@ class Page < ActiveRecord::Base
 
 	def sub_pages
 		Page.find_all_by_parent_id(self.id)
+	end
+	
+	def page_url
+		"/#{I18n.locale}/pages/#{self.id}"
 	end
 	
 	def gallery

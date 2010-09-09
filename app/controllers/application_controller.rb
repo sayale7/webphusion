@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  rescue_from ActionController::RoutingError, :with => :route_not_found
+  #rescue_from ActionController::RoutingError, :with => :route_not_found
   rescue_from ActionController::MethodNotAllowed, :with => :invalid_method
 	before_filter :set_current_theme_for_model, :set_current_page_for_show, :set_locale
   
@@ -80,7 +80,10 @@ class ApplicationController < ActionController::Base
 
 	def set_locale
 	  # if params[:locale] is nil then I18n.default_locale will be used
-	  I18n.locale = request.subdomains.first.to_s.length == 2 ? request.subdomains.first.to_s : I18n.default_locale  
+	  I18n.locale = request.subdomains.first.to_s.length == 2 ? request.subdomains.first.to_s : I18n.default_locale
+		unless params[:locale].nil?  
+			I18n.locale = params[:locale]
+		end
 		Page.current_locale = I18n.locale
 	end
 	
