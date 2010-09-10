@@ -29,7 +29,7 @@ class Page < ActiveRecord::Base
   end
 
 	def sub_pages
-		Page.find_all_by_parent_id(self.id)
+		Page.find_all_by_parent_id(self.id, :order => 'position')
 	end
 	
 	def page_url

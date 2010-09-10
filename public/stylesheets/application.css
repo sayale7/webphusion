@@ -3,7 +3,7 @@
 body {
   background-color: #E3E3E3;
   font-family: Verdana, Helvetica, Arial;
-  font-size: 12px;
+  font-size: 13px;
 	padding:0;
 	margin:0;
 	overflow: hidden;
@@ -11,7 +11,7 @@ body {
 
 p{
 	font-family: Verdana, Helvetica, Arial;
-	font-size: 12px;
+	font-size: 13px;
 }
 
 a img {
@@ -19,7 +19,7 @@ a img {
 }
 
 a {
-  color: #5D90BC;
+  color: #7D333E;
 	text-decoration:none;
 }
 a:hover {
@@ -37,14 +37,6 @@ h3:hover{
 
 ul{
 	padding-left:0;
-}
-
-ul.root{
-	padding-left:0;
-}
-
-ul.sub{
-	padding-left:25px;
 }
 
 li{
@@ -317,3 +309,12 @@ input[type=text], input[type=password]{
 #code{
 	height:500px;
 }
+
+#root { list-style-type: none; margin: 0; padding: 0;  }
+#root li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em;  background:#F9FDF6; border:1px solid #ccc;}
+#root li span.span-left { font-weight:bold; }
+#root li span.span-right { float:right; }
+#root li ul.sub { list-style-type: none; margin-top: 15px; padding: 0;  }
+#root li ul.sub li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em;  height: 18px; background-image: url(/images/jquery-ui/ui-bg_highlight-soft_100_eeeeee_1x100.png); background-repeat:repeat-x; border:1px solid #ccc;}
+#root li ul.sub li span.span-left { font-weight:bold; }
+#root li ul.sub li span.span-right { float:right; }

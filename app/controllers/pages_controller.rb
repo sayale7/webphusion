@@ -2,22 +2,29 @@ class PagesController < ApplicationController
 
 	respond_to :html, :js
 	layout '/layouts/pages'	
-	
-  def index
-		parent = ""
-		if params[:parent] == "none"
-			parent = nil
+
+	def index
+		if request.url.include?('page_ids')
+			params[:page_ids].each_with_index do |page_id, index|
+				Page.find(page_id).update_attribute(:position, index)
+			end
+			redirect_to '/pages?parent=none'
 		else
-			parent = params[:parent]
+			parent = ""
+			if params[:parent] == "none"
+				parent = nil
+			else
+				parent = params[:parent]
+			end
+			if current_user.themes.empty?
+				flash[:info] = t('page.no_template')
+				redirect_to themes_url
+			else
+				@pages = current_user.pages.find_all_by_parent_id(parent, :order => 'position')
+				render :layout => '/layouts/application'
+			end
 		end
-		if current_user.themes.empty?
-			flash[:info] = t('page.no_template')
-			redirect_to themes_url
-		else
-	    @pages = current_user.pages.find_all_by_parent_id(parent)
-			render :layout => '/layouts/application'
-		end
-  end
+	end
   
   def show
 		if request.subdomains.empty?
@@ -53,10 +60,11 @@ class PagesController < ApplicationController
   def update
     @page = Page.find(params[:id])
 		@theme = Theme.find(@page.theme_id)
-		if @page.update_attributes(params[:page])
-    	@pages = current_user.pages.find_all_by_parent_id(nil)
-      render :template => '/pages/index'
-    end
+		update_postions_in_old_level
+		@page.update_attributes(params[:page])
+		@page.update_attribute(:position, current_user.pages.find_all_by_parent_id(@page.parent_id).size - 1)
+    @pages = current_user.pages.find_all_by_parent_id(nil, :order => 'position')
+    render :template => '/pages/index'
   end
   
   def destroy
@@ -64,6 +72,15 @@ class PagesController < ApplicationController
     @page.destroy
     redirect_to pages_url
   end
+
+	def reorder_pages
+		unless params[:parent].to_s.eql?('none')
+			@pages = current_user.pages.find_all_by_parent_id(params[:parent], :order => 'position')
+		else
+			@pages = current_user.pages.find_all_by_parent_id(nil, :order => 'position')
+		end
+		render :layout => '/layouts/application'
+	end
 
 	# def add_item_to_page
 	# 	@page = Page.find(params[:page].to_s)
@@ -85,6 +102,13 @@ class PagesController < ApplicationController
 	# end
 
 	private
+	
+	def update_postions_in_old_level
+		pages = current_user.pages.find_all_by_parent_id(@page.parent_id, :order => 'position') - @page.to_a
+		pages.each_with_index do |page, index|
+			page.update_attribute(:position, index)
+		end
+	end
 	
 	def create_items_for_theme
 		Theme.find(@page.theme_id).theme_items.each do |theme_item|

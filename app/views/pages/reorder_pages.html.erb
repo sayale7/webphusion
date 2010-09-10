@@ -1,0 +1,23 @@
+<%= stylesheet 'jquery-ui' %>
+<%= javascript 'jquery-ui' %>
+<style>
+	li:hover{cursor:move;}
+</style>
+<script type="text/javascript">
+$(function() {
+	$("#root").sortable();
+	$("#root").disableSelection();
+});
+</script>
+
+<% form_tag pages_url(:parent => 'none'), :method => :get do %>
+<ul id="root">
+	<% for page in @pages %>
+		<li>
+			<span class="span-left"><%= page.name %></span>
+			<%= hidden_field_tag "page_ids[]", page.id %>
+		</li>
+	<% end %>
+</ul>
+<%= submit_tag t('common.update') %>
+<% end %>

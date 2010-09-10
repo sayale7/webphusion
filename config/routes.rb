@@ -37,6 +37,7 @@ Easywebman::Application.routes.draw do |map|
 	match "/update_item_data_contents" => "item_datas#update_content"
 	match "/add_item_to_page" =>  "pages#add_item_to_page"
 	match "/remove_item_from_page" =>  "pages#remove_item_from_page"
+	match "/reorder_pages" => "pages#reorder_pages"
 	
 	match "/pages/new" => "pages#new"
 	

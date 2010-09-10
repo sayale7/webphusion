@@ -4,7 +4,7 @@
     <%= f.label :theme_id, t('common.theme') %>
     <%= f.select :theme_id, current_user.themes.all.collect {|theme| [ theme.name, theme.id ] } %>
     <%= f.label :parent_id, t('page.parent') %>
-    <%= f.select :parent_id, (current_user.pages.find_all_by_parent_id(nil) - @page.to_a).collect {|page| [ page.title, page.id ] }, :include_blank => true %>
+    <%= f.select :parent_id, (current_user.pages.find_all_by_parent_id(nil) - @page.to_a).collect {|page| [ page.name, page.id ] }, :include_blank => true %>
 		<%= f.hidden_field :website_id, :value => current_user.id %>
 		<%= f.label :active, t('common.active') %>
 		<%= f.check_box :active  %></p>

@@ -15,6 +15,7 @@ gem 'acts_as_tree'
 gem 'liquid'
 gem 'mongrel'
 gem 'capistrano'
+#gem 'acts-as-list'  
 
 
 # Use unicorn as the web server

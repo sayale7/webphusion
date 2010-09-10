@@ -67,6 +67,8 @@ de:
     no_items_available: Sie haben keine Elemente in Ihrem Layout die befüllt werden könnten. Bitte wenden Sie sich an Ihren Administrator
     edit_content: Seiteninhalt bearbeiten
     edit: Seiteninformation bearbeiten
+    reorder_root_level: Reihenfolge der Hauptebene bearbeiten 
+    reorder_sub_level: Reihenfolge dieser Unterebene bearbeiten 
   messages:
     cannot_destroy_theme: Dieses Layout kann nur gelöscht werden, wenn es durch keine der Seiten referenziert wird. Ansonsten können wichtige Daten verloren gehen!
   theme:
