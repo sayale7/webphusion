@@ -129,7 +129,7 @@ class PagesController < ApplicationController
 		else
 			@page = User.find_by_domain(domain_string).pages.first
 		end
-		@pages = User.find_by_domain(domain_string).pages.find_all_by_active_and_parent_id(true, nil)
+		@pages = User.find_by_domain(domain_string).pages.find_all_by_active_and_parent_id(true, nil, :order => 'position')
 	end
 	
 	def get_page_by_subdomain_name
@@ -139,6 +139,6 @@ class PagesController < ApplicationController
 		else
 			@page = User.find_by_subdomain(subdomain_string).pages.first
 		end
-		@pages = User.find_by_subdomain(subdomain_string).pages.find_all_by_active_and_parent_id(true, nil)
+		@pages = User.find_by_subdomain(subdomain_string).pages.find_all_by_active_and_parent_id(true, nil, :order => 'position')
 	end
 end
