@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
 	
-	liquid_methods :page_url, :name, :title, :parent_id, :sub_pages, :gallery
+	liquid_methods :id, :page_url, :name, :title, :parent_id, :sub_pages, :gallery
 	
 	belongs_to :user
 	belongs_to :theme
