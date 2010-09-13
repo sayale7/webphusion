@@ -71,6 +71,7 @@ de:
     reorder_root_level: Reihenfolge der Hauptebene bearbeiten 
     reorder_sub_level: Reihenfolge dieser Unterebene bearbeiten 
     my_sites: Meine Seiten
+    reorder: Seitenreihenfolge per Drag & Drop
   messages:
     cannot_destroy_theme: Dieses Layout kann nur gelöscht werden, wenn es durch keine der Seiten referenziert wird. Ansonsten können wichtige Daten verloren gehen!
   theme:
