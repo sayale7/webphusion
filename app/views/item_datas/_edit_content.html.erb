@@ -4,7 +4,7 @@
 <p><%= link_to t('file_upload.upload_common_files'), common_files_url, :class => 'assets_iframe' %> </p>
 </div>
 
-<div class="toggle_editor">
+<div class="toggle_editor" style="clear:both">
 <%= form_for @item_data_content, :url => "/update_item_data_contents?id=#{@item_data_content.id}", :remote => true, :html => {:rel => 'tiny'} do |f| %>
 <%= f.hidden_field :locale, :value => @item_data_content.locale %>
 <%= f.hidden_field :name, :value => @item_data_content.name %>
