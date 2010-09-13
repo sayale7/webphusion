@@ -56,7 +56,7 @@ class Asset < ActiveRecord::Base
 	end
 	
 	def asset_description
-		return self.description
+		return self.descriptions.find_all_by_language(I18n.locale)
 	end
 
 	
