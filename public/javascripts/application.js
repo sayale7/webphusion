@@ -29,4 +29,16 @@ $(document).ready(function(){
 	
 	$("#container").css('height', $(window).height());
 	
+	$(".edit_link").mouseover(function() {
+		$(this).parent().prev().css('color', '#000').css('font-size', '20px');
+	}).mouseout(function(){
+		$(this).parent().prev().css('color', '#303030').css('font-size', '18px');;
+	});
+	
+	$(".edit_sub_link").mouseover(function() {
+		$(this).parent().prev().css('color', '#000').css('font-size', '20px');
+	}).mouseout(function(){
+		$(this).parent().prev().css('color', '#303030').css('font-size', '18px');;
+	});
+	
 });

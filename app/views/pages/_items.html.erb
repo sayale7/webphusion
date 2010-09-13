@@ -1,14 +1,11 @@
 <div id="added_items">
-<% @page.items_by_theme.each do |item| %>
+<h3><%= t('item_data.text_items') %></h3>
+<% @page.items_by_theme('Text').each do |item| %>
 	<div class="full">
-		<% if item.theme_item.item_kind.to_s.eql?('Text') %>
-			<%= link_to item.theme_item.name, '#', :class => 'data_items' %> <%# link_to t('item_data.edit_item_data_content'), "/new_content", :class => 'item_data_iframe' %>
-		<% else %>
-			<%= link_to item.theme_item.name, '#' %>
-		<% end %>
+		<%= link_to item.theme_item.name, '#', :class => 'data_items' %>
 		<div id="data_item_contents_<%= item.id %>" class="hidden page_languages">
 			<% item.item_data_contents.each do |content| %>
-				 <%= link_to content.locale, "/edit_content?id=#{content.id}", :remote => true, :rel => 'tiny' %>
+				 <%= link_to get_long_version(content.locale), "/edit_content?id=#{content.id}", :remote => true, :rel => 'tiny' %>
 			<% end %>
 		</div>
 	</div>

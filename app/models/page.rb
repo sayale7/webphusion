@@ -8,8 +8,8 @@ class Page < ActiveRecord::Base
   # has_many :theme_items, :through => :items
 	after_save :update_items_for_theme
 
- 	def items_by_theme
-		self.items.find_all_by_theme_item_id_and_active(ThemeItem.find_all_by_theme_id(self.theme_id), true)
+ 	def items_by_theme(type)
+		self.items.find_all_by_theme_item_id_and_active(ThemeItem.find_all_by_theme_id_and_item_kind(self.theme_id, type.to_s), true)
 	end
 	
 	def self.current_pgae

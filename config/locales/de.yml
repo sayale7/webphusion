@@ -56,6 +56,7 @@ de:
   item_data:
     edit_item_data_content: Inhalt des Elements bearbeiten
     items: Aktivierte Elemente des Elements
+    text_items: Frei editierbare Teile der Seite
   item:
     items_of_page: Verfügbare Ressourcen dieses Layoutes
     no_items: Wählen Sie bitte ein Element aus
@@ -69,10 +70,14 @@ de:
     edit: Seiteninformation bearbeiten
     reorder_root_level: Reihenfolge der Hauptebene bearbeiten 
     reorder_sub_level: Reihenfolge dieser Unterebene bearbeiten 
+    my_sites: Meine Seiten
   messages:
     cannot_destroy_theme: Dieses Layout kann nur gelöscht werden, wenn es durch keine der Seiten referenziert wird. Ansonsten können wichtige Daten verloren gehen!
   theme:
     updated: Die Änderungen am Layout wurden gespeichert
+  language:
+    de: Deutsch
+    en: Englisch
 
   activerecord:
     models:

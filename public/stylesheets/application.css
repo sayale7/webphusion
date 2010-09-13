@@ -31,9 +31,6 @@ h3{
 	font-size:12px;
 	margin:0 0 5px 0;
 }
-h3:hover{
-	cursor:pointer;
-}
 
 ul{
 	padding-left:0;
@@ -101,21 +98,24 @@ input[type=text], input[type=password]{
 	width:100%;
 	height:15px;
 	text-align:right;
-	background:#282828;
-	border:medium solid black;
+/*	background:#282828;*/	
+	background: -webkit-gradient(radial, 50% 50%, 100, 50% 50%, 350, from(#8D8A8D), to(#77767C));
+	background: -moz-radial-gradient(center 50%,circle,#8D8A8D 10%,#77767C 70%);
+	text-shadow: 1px 1px 2px #000;
 }
 #user_nav a {
-  color: #000;
+  color: #fff;
 	text-decoration:none;
-	padding:2px;
-	background:#fff;
-	-moz-border-radius:2px; 
-	-khtml-border-radius:2px;
+	padding:5px;
+	background:#282828;
+	-moz-border-radius:3px; 
+	-khtml-border-radius:3px;
 }
 
 #user_nav a:hover {
-  color: #fff;
-	background:#000;
+  color: #000;
+	background:#fff;
+	text-shadow: 1px 1px 2px #fff;
 }
 
 #side_nav{
@@ -124,37 +124,31 @@ input[type=text], input[type=password]{
 	width:18%;
 	padding:1%;
 	height:100%;
-	background:#FFF5F5;
+/*	background:#FFF5F5;
 	background: transparent url("/images/bg_left.png");	
-	background-repeat: repeat;
-	border:medium solid black;
+	background-repeat: repeat;*/
+/*	background:-moz-radial-gradient(center, #fff, #adf); 
+	background:-webkit-gradient(radial, center center, 80, center center, 400, from(#D2D2D2), to(#A1A1A1)); */
+	background:#CCFFCC; /*alternative Hintergrundfarbe für IE*/
+	background: -webkit-gradient(radial, 50% 50%, 100, 50% 50%, 350, from(#8D8A8D), to(#77767C));
+	background: -moz-radial-gradient(center 50%,circle,#8D8A8D 10%,#77767C 70%);
 	position:fixed;	
 	overflow:auto;
+	text-shadow: 1px 1px 2px #000;
 }
+
+#side_nav h3{
+	color:#fff;
+}
+
 #side_nav a {
-  color: #000;
+  color:#fff; text-shadow: 1px 1px 2px #000;
 	text-decoration:none;
-	padding:4px;
-	-moz-border-radius:2px; 
-	-khtml-border-radius:2px;
 }
 
-#side_nav .img{
-	height:15px;
-	background:transparent;
-}
-
-#side_nav .img:hover{
-	background:transparent;
-}
-
-#side_nav a img{
-	vertical-align:middle;
-}
 
 #side_nav a:hover {
-  color: #fff;
-	background:#282828;
+  color:#000; text-shadow: 1px 1px 2px #fff;
 }
 
 #content{
@@ -166,6 +160,8 @@ input[type=text], input[type=password]{
 	background:#fff;
 	overflow:auto;
 }
+
+
 
 #popup_content{
 	clear:none;
@@ -181,6 +177,14 @@ input[type=text], input[type=password]{
 	float:right;
 	overflow:hidden;
 }
+
+#content_full h1{
+	text-align:center;
+	font-size:35px;
+	color:#303030;
+	text-shadow: -1px -1px 0px #101010, 1px 1px 3px #505050;
+}
+
 #content_for_editor{
 	clear:none;
 	width:870px;
@@ -310,11 +314,13 @@ input[type=text], input[type=password]{
 	height:500px;
 }
 
-#root { list-style-type: none; margin: 0; padding: 0;  }
-#root li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em;  background:#F9FDF6; border:1px solid #ccc;}
-#root li span.span-left { font-weight:bold; }
+#root { list-style-type: none; margin: 0; padding: 0; color:#000; width:60%;}
+#root a {color:#000; text-shadow: 1px 1px 2px #ccc;}
+#root a:hover {color:#ccc; text-shadow: 1px 1px 1px #5F5F5F;}
+#root li { margin: 0 3px 3px 3px;  padding-left: 1.5em;  }
+#root li span.span-left { font-weight:bold;font-size:18px;color:#303030;text-shadow: 0 0 0px #101010, 1px 1px 2px #505050; }
 #root li span.span-right { float:right; }
-#root li ul.sub { list-style-type: none; margin-top: 15px; padding: 0;  }
-#root li ul.sub li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em;  height: 18px; background-image: url(/images/jquery-ui/ui-bg_highlight-soft_100_eeeeee_1x100.png); background-repeat:repeat-x; border:1px solid #ccc;}
-#root li ul.sub li span.span-left { font-weight:bold; }
+#root li ul.sub { list-style-type: none;  padding: 0;  }
+#root li ul.sub li { margin-top: 15px; margin-bottom: 15px; padding-left: 1.5em;  height: 18px; }
+#root li ul.sub li span.span-left { font-weight:bold;font-size:18px;color:#303030;text-shadow: 0 0 0px #101010, 1px 1px 2px #505050; }
 #root li ul.sub li span.span-right { float:right; }

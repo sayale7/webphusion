@@ -67,4 +67,12 @@ module ApplicationHelper
 	  EOF
 	end
 	
+	def get_long_version(locale)
+		if locale.to_s.eql?('de')
+			t 'language.de'
+		elsif locale.to_s.eql?('en')
+			t 'language.en'
+		end
+	end
+	
 end
