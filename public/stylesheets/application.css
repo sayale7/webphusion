@@ -161,7 +161,13 @@ input[type=text], input[type=password]{
 	overflow:auto;
 }
 
+#content a{
+	color:#000; text-shadow: 1px 1px 2px #ccc;
+}
 
+#content a:hover{
+	color:#ccc; text-shadow: 1px 1px 1px #5F5F5F;
+}
 
 #popup_content{
 	clear:none;
@@ -176,6 +182,14 @@ input[type=text], input[type=password]{
 	padding:1%;
 	float:right;
 	overflow:hidden;
+}
+
+#content_full a{
+	color:#000; text-shadow: 1px 1px 2px #ccc;
+}
+
+#content_full a:hover{
+	color:#ccc; text-shadow: 1px 1px 1px #5F5F5F;
 }
 
 #content_full h1{
@@ -315,6 +329,7 @@ input[type=text], input[type=password]{
 }
 
 #root { list-style-type: none; margin: 0; padding: 0; color:#000; width:60%;}
+#root .with_border {background: -webkit-gradient(radial, 50% 50%, 100, 50% 50%, 350, from(#B0ABB0), to(#9F9DA6));background: -moz-radial-gradient(center 50%,circle,#B0ABB0 10%,#9F9DA6 70%);; border:thin solid #000;}
 #root a {color:#000; text-shadow: 1px 1px 2px #ccc;}
 #root a:hover {color:#ccc; text-shadow: 1px 1px 1px #5F5F5F;}
 #root li { margin: 0 3px 3px 3px;  padding-left: 1.5em;  }

@@ -1,15 +1,29 @@
-<div class="image_manager"><img src="", style="display:none;" id="input_link"></img> 
-<%= link_to t('file_upload.upload_common_files'), common_files_url, :class => 'assets_iframe' %> 
-</div>
+
 <div id="item_data_content_form", class="editor_content">
 	<%= render '/item_datas/edit_content' %>
 </div>
+<div class="image_gallery" style="display:none">
 <% if @theme_item  %>
-	<p><%= link_to t('file_upload.collection_uploads'), assets_url(:collection_id => @item.id), :class => 'assets_iframe' %></p>
+	<p>
+		<%= link_to t('file_upload.collection_uploads'), assets_url(:collection_id => @item.id), :class => 'assets_iframe' %>
+	</p>
 	<% Asset.find_all_by_collection_id(@item.id).each do |asset| %>
-		<div class="left"><%= link_to image_tag(asset.image.url(:thumb) ), edit_asset_path(asset)%></div>
+		<div class="left">
+			<%= link_to image_tag(asset.image.url(:thumb) ), "#data#{asset.id}", :id => "inline"  %>
+			<div style="display:none">
+				<div id="data<%= asset.id %>">
+					<% get_available_locales.each do |the_locale| %>
+						<p>
+							<%= link_to get_long_version(the_locale), edit_asset_url(asset, :language => the_locale) %>
+						</p>
+					<% end %>
+				</div>
+			</div>
+		</div>
 	<% end %>
 <% end %>
+</div>
+
 
 
 <% if false %>

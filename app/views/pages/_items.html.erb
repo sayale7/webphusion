@@ -1,5 +1,8 @@
 <div id="added_items">
+
+<% unless @page.items_by_theme('Text').empty? %>
 <h3><%= t('item_data.text_items') %></h3>
+<% end %>
 <% @page.items_by_theme('Text').each do |item| %>
 	<div class="full">
 		<%= link_to item.theme_item.name, '#', :class => 'data_items' %>
@@ -8,6 +11,15 @@
 				 <%= link_to get_long_version(content.locale), "/edit_content?id=#{content.id}", :remote => true, :rel => 'tiny' %>
 			<% end %>
 		</div>
+	</div>
+<% end %>
+
+<% unless @page.items_by_theme('Bilder').empty? %>
+<h3><%= t('item_data.image_gallery') %></h3>
+<% end %>
+<% @page.items_by_theme('Bilder').each do |item| %>
+	<div class="full">
+		<%= link_to item.theme_item.name, '#', :class => 'show_image_gallery' %>
 	</div>
 <% end %>
 </div>

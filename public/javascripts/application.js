@@ -22,23 +22,29 @@ $(document).ready(function(){
 		if($(this).next().css('display') == 'none'){
 			$(this).next().show(50);
 		}else{
-			$(this).next().hide(50);			
+			$(this).next().hide(50);	
 		}
-		
-	})
+	});
 	
 	$("#container").css('height', $(window).height());
 	
-	$(".edit_link").mouseover(function() {
-		$(this).parent().prev().css('color', '#000').css('font-size', '20px');
-	}).mouseout(function(){
-		$(this).parent().prev().css('color', '#303030').css('font-size', '18px');;
+	$('.show_image_gallery').live('click', function(e){
+		e.preventDefault();
+		$('.toggle_editor').fadeOut('fast');
+		$('.image_manager').fadeOut('fast');
+		$('.image_gallery').fadeIn('slow');
 	});
 	
-	$(".edit_sub_link").mouseover(function() {
-		$(this).parent().prev().css('color', '#000').css('font-size', '20px');
-	}).mouseout(function(){
-		$(this).parent().prev().css('color', '#303030').css('font-size', '18px');;
-	});
+	// $(".edit_link").mouseover(function() {
+	// 	$(this).parent().prev().css('color', '#000').css('font-size', '19px');
+	// }).mouseout(function(){
+	// 	$(this).parent().prev().css('color', '#303030').css('font-size', '18px');;
+	// });
+	// 
+	// $(".edit_sub_link").mouseover(function() {
+	// 	$(this).parent().prev().css('color', '#000').css('font-size', '19px');
+	// }).mouseout(function(){
+	// 	$(this).parent().prev().css('color', '#303030').css('font-size', '18px');;
+	// });
 	
 });

@@ -46,12 +46,13 @@ class AssetsController < ApplicationController
 	
 	def edit
 		@asset = Asset.find(params[:id])
-		#render :layout => 'popup'
+		@asset_description = Description.find_by_descriptionable_type_and_descriptionable_id_and_language('Asset', @asset.id, params[:language].to_s)
 	end
 	
 	def update
 		asset = Asset.find(params[:id])
-		asset.update_attributes(params[:asset])
+		description = Description.find_by_descriptionable_type_and_descriptionable_id_and_language('Asset', asset.id, params[:language].to_s)
+		description.update_attribute(:content, params[:description])
 		redirect_to "/edit_content?item_id=#{ItemDataContent.find_all_by_item_id(asset.collection_id).first.id}"
 	end
 	

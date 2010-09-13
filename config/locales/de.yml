@@ -37,12 +37,12 @@ de:
     we_need_current_password: Wir benötigen Ihr Passwort zum Bestätigen der Änderungen #we need your current password to confirm your changes
   file_upload:
     upload_images: Bilder hinzufügen
-    upload_common_files: Dateien Manager
+    upload_common_files: Filemanager
     theme_upload: Theme Files hinzufügen
     uploade_at: Raufgeladen am
     copy_to_area: Bild einfügen
     upload: Bilder Manager
-    collection_uploads: Bilder zu Gallerie hinzufügen
+    collection_uploads: Filemanager
   navigation:
     layout_management: Layout-Verwaltung
     page_management: Seiten-Verwaltung
@@ -57,6 +57,7 @@ de:
     edit_item_data_content: Inhalt des Elements bearbeiten
     items: Aktivierte Elemente des Elements
     text_items: Frei editierbare Teile der Seite
+    image_gallery: Bilder Gallerie der Seite
   item:
     items_of_page: Verfügbare Ressourcen dieses Layoutes
     no_items: Wählen Sie bitte ein Element aus
@@ -71,7 +72,7 @@ de:
     reorder_root_level: Reihenfolge der Hauptebene bearbeiten 
     reorder_sub_level: Reihenfolge dieser Unterebene bearbeiten 
     my_sites: Meine Seiten
-    reorder: Seitenreihenfolge per Drag & Drop
+    reorder: Seitenreihenfolge per Drag & Drop ändern
   messages:
     cannot_destroy_theme: Dieses Layout kann nur gelöscht werden, wenn es durch keine der Seiten referenziert wird. Ansonsten können wichtige Daten verloren gehen!
   theme:

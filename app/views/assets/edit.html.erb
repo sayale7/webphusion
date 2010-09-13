@@ -1,5 +1,6 @@
 <%= render '/shared/simple_tiny' %>
-<%= form_for @asset, :remote => false do |f| %>
-	<%= f.text_area :description, :class => 'tinymce' %><br/>
-	<%= f.submit t('common.save') %>
+<%= form_tag asset_path(@asset), :method => :put do  %>
+	<%= hidden_field_tag 'language', @asset_description.language %>
+	<%= text_area_tag 'description', @asset_description.content, :class => 'tinymce' %><br/>
+	<p><%= submit_tag t('common.save') %></p>
 <% end %>

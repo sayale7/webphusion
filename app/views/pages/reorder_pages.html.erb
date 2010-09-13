@@ -14,11 +14,11 @@ $(function() {
 <ul id="root">
 	<h1><%= t('page.reorder') %></h1>
 	<% for page in @pages %>
-		<li>
+		<li class="with_border">
 			<span class="span-left"><%= page.name %></span>
 			<%= hidden_field_tag "page_ids[]", page.id %>
 		</li>
 	<% end %>
 </ul>
-<%= submit_tag t('common.update') %>
+<p><%= submit_tag t('common.update') %></p>
 <% end %>

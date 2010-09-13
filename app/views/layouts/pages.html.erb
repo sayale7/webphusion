@@ -65,6 +65,15 @@
 					'speedOut'		:	200,
 					'autoScale'	 : true
 				});
+				
+				$("a#inline").live('click', function(){
+					$(this).fancybox({
+						'autoScale'	 : true,
+						'titleShow' : false
+					});
+					$(this).click();
+					return false;
+				});
 
 			});
 		</script>		

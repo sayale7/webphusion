@@ -103,6 +103,7 @@ jQuery(function ($) {
         $(this).callRemote();
 				if ($(this).attr('rel') == 'tiny')
 				{
+					$('.image_gallery').fadeOut('fast');
 					tinyMCE.execCommand('mceFocus', false, 'item_data_content_content');    
 					tinyMCE.execCommand('mceRemoveControl', false, 'item_data_content_content');
 					$('#item_data_content_form').html('<img src="/images/ajax-loader.gif"/>');

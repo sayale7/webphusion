@@ -2,7 +2,7 @@ class Asset < ActiveRecord::Base
 	
 	liquid_methods :image_path, :asset_description, :thumb_image_path, :medium_image_path
 	
-	attr_accessible :user_id, :image, :collection_id, :description
+	attr_accessible :user_id, :image, :collection_id
 	belongs_to :user
 	has_attached_file :image,
 	 									:styles => { :medium => "490x490>", :thumb => "65x45#" },
@@ -21,6 +21,28 @@ class Asset < ActiveRecord::Base
 	# 	trans << "\\) +matte -compose CopyOpacity -composite "
 	# end,
 	
+	after_save :attach_asset_descriptions
+	
+	def descriptions
+		Description.find_all_by_descriptionable_type_and_descriptionable_id('Asset', self.id)
+	end
+	
+	def attach_asset_descriptions
+		self.available_languages.each do |language|
+			Description.find_or_create_by_language_and_descriptionable_type_and_descriptionable_id(language, 'Asset', self.id)
+		end
+	end
+		
+	def available_languages
+		['de', 'en']
+	end
+	
+	def destroy_descriptions
+		self.descriptions.each do |description|
+			description.destroy
+		end
+	end
+	
 	def image_path
 		return self.image.url
 	end
@@ -36,5 +58,6 @@ class Asset < ActiveRecord::Base
 	def asset_description
 		return self.description
 	end
+
 	
 end
