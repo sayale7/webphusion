@@ -56,7 +56,7 @@ class Asset < ActiveRecord::Base
 	end
 	
 	def asset_description
-		return Desctiption.find_by_language_and_descriptionable_type_and_descriptionable_id(I18n.locale, 'Asset', self.id).content
+		return Description.find_by_language_and_descriptionable_type_and_descriptionable_id(I18n.locale, 'Asset', self.id).content
 	end
 
 	
