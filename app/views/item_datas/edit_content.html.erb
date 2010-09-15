@@ -5,12 +5,12 @@
 <div class="image_gallery" style="display:none">
 <% if @theme_item  %>
 	<p>
-		<%= link_to t('file_upload.collection_uploads'), assets_url(:collection_id => @item.id), :class => 'assets_iframe' %>
+		<%= link_to t('file_upload.collection_uploads'), assets_url(:collection_id => @item.id), :class => 'assets_iframe button_link' %>
 	</p>
 	<% Asset.find_all_by_collection_id(@item.id).each do |asset| %>
 		<div class="left">
 			<%= link_to image_tag(asset.image.url(:thumb) ), "#data#{asset.id}", :id => "inline"  %>
-			<div style="display:none">
+			<div style="display:none; overflow:hidden">
 				<div id="data<%= asset.id %>">
 					<% get_available_locales.each do |the_locale| %>
 						<p>

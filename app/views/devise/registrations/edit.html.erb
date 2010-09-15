@@ -1,3 +1,4 @@
+<div id='nice_form'>
 <h2><%= t('authentication.edit_account') %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
@@ -22,3 +23,4 @@
 <% end %>
 
 <%= link_to t('common.back'), :back %>
+</div>

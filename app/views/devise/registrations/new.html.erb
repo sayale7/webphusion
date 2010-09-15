@@ -1,3 +1,4 @@
+<div id='nice_form'>
 <h2><%= t('authentication.register') %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -16,3 +17,4 @@
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
+</div>

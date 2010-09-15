@@ -1,7 +1,7 @@
 <%= render '/shared/tiny' %>
 <% unless @item_data_content.nil? or !@item_data_content.item.theme_item.item_kind.to_s.eql?('Text') %>
 <div class="image_manager">
-<p><%= link_to t('file_upload.upload_common_files'), common_files_url, :class => 'assets_iframe' %> </p>
+<p><%= link_to t('file_upload.upload_common_files'), common_files_url, :class => 'assets_iframe button_link' %> </p>
 </div>
 
 <div class="toggle_editor" style="clear:both">

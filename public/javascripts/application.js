@@ -35,6 +35,9 @@ $(document).ready(function(){
 		$('.image_gallery').fadeIn('slow');
 	});
 	
+	var the_margin = (($(document).width()/2) - $('#nice_form').width()/2) + "px";
+	$('#nice_form').css('margin-left', the_margin);
+	
 	// $(".edit_link").mouseover(function() {
 	// 	$(this).parent().prev().css('color', '#000').css('font-size', '19px');
 	// }).mouseout(function(){

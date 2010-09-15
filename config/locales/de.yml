@@ -19,6 +19,7 @@ de:
     title: Titel
     confirm: Sind Sie sicher, dass Sie löschen wollen?
     name: Name
+    cancel: Abrechen
   authentication:
     login: Einloggen
     logout: Ausloggen

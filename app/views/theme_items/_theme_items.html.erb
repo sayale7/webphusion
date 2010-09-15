@@ -1,4 +1,4 @@
-<ul>
+<ul id='nice_form'>
 		<% @theme.theme_items.each do |item| %>
 			<li class="full">
 				<%= link_to image_tag('/images/cancel.png'), item, :method => :delete, :remote => true, :confirm => t('theme_item.confirm'), :class => 'img' %>
