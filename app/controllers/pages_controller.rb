@@ -44,6 +44,7 @@ class PagesController < ApplicationController
   
   def create
     @page = Page.new(params[:page])
+		@page.position = current_user.pages.find_all_by_parent_id(@page.parent_id).size
     if @page.save
     	@pages = current_user.pages.find_all_by_parent_id(nil)
       render :template => '/pages/index'
@@ -60,9 +61,14 @@ class PagesController < ApplicationController
   def update
     @page = Page.find(params[:id])
 		@theme = Theme.find(@page.theme_id)
-		update_postions_in_old_level
+		different_level = @page.parent_id.to_s.eql?(params[:page][:parent_id].to_s)
+		unless different_level
+			update_postions_in_old_level
+		end
 		@page.update_attributes(params[:page])
-		@page.update_attribute(:position, current_user.pages.find_all_by_parent_id(@page.parent_id).size - 1)
+		unless different_level
+			@page.update_attribute(:position, current_user.pages.find_all_by_parent_id(@page.parent_id).size - 1)
+		end
     @pages = current_user.pages.find_all_by_parent_id(nil, :order => 'position')
     render :template => '/pages/index'
   end

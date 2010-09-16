@@ -12,10 +12,9 @@ $(function() {
 
 <% form_tag pages_url(:parent => 'none'), :method => :get do %>
 <ul id="root">
-	<h1><%= t('page.reorder') %></h1>
 	<% for page in @pages %>
 		<li class="with_border">
-			<span class="span-left"><%= page.name %></span>
+			<%= page.name %>
 			<%= hidden_field_tag "page_ids[]", page.id %>
 		</li>
 	<% end %>

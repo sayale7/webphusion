@@ -1,5 +1,4 @@
 <div id="nice_form">
-<h2><%= t('authentication.login') %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <p><%= f.label :email, t('common.email') %><br />

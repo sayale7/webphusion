@@ -2,6 +2,7 @@
 	width:770px;
 	overflow:hidden;
 	clear:both;
+	margin: -10px;
 }
 
 #upload_photo_container{
@@ -52,8 +53,9 @@
 #image_upload_bottom_left{
 	float:left;
 	width:572px;
-	height:20px;
+	height:25px;
 	padding:5px;
+	padding-top:0;
 	border:solid 1px darkgray;
 	border-top:none;
 	background-image: url('/images/button_background.png');

@@ -75,4 +75,12 @@ module ApplicationHelper
 		end
 	end
 	
+	def has_children(page)
+		if Page.find_all_by_parent_id(page.id).empty?
+			false
+		else
+			true
+		end
+	end
+	
 end
