@@ -2,5 +2,5 @@
 <%= form_tag asset_path(@asset), :method => :put do  %>
 	<%= hidden_field_tag 'language', @asset_description.language %>
 	<%= text_area_tag 'description', @asset_description.content, :class => 'tinymce' %><br/>
-	<p><%= submit_tag t('common.save') %> <%= link_to t('common.cancel'), "/edit_content?item_id=#{ItemDataContent.find_all_by_item_id(@asset.collection_id).first.id}", :class => 'button_link' %></p>
+	<p><%= submit_tag t('common.save') %> <%= link_to t('common.cancel'), "/edit_content?from_asset=#{@asset.id}", :class => 'button_link' %></p>
 <% end %>

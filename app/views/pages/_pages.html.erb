@@ -4,7 +4,7 @@
 			<span class="span-left"><%= page.name %></span>
 			<span class="span-right">
 			<% unless page.theme.theme_items.empty? %>
-			<%= link_to t('page.edit_content'), edit_content_path(:item_id => get_content_id(page)), :class => 'edit_link button_link' %> 
+			<%= link_to t('page.edit_content'), edit_content_path(:page_id => page), :class => 'edit_link button_link' %> 
 			<% end %>
 			<%= link_to t('page.edit'), edit_page_path(page), :class => 'ajax edit_link  button_link' %>
 			<%= link_to t('common.delete'), page, :method => :delete, :confirm => t('common.confirm'), :class => 'edit_link  button_link' %>
@@ -18,7 +18,7 @@
 						<span class="span-left"><%= sub_page.name %></span>
 						<span class="span-right">
 						<% unless sub_page.theme.theme_items.empty? %>
-						<%= link_to t('page.edit_content'), edit_content_path(:item_id => get_content_id(sub_page)), :class => 'edit_sub_link  button_link' %> 
+						<%= link_to t('page.edit_content'), edit_content_path(:page_id => sub_page), :class => 'edit_sub_link  button_link' %> 
 						<% end %>
 						<%= link_to t('page.edit'), edit_page_path(sub_page), :class => 'ajax edit_sub_link  button_link'   %> 
 						<%= link_to t('common.delete'), sub_page, :method => :delete, :confirm => t('common.confirm'), :class => 'edit_sub_link  button_link' %>

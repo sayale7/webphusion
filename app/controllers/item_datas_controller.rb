@@ -15,15 +15,21 @@ class ItemDatasController < ApplicationController
 	end
 	
 	def edit_content
-		if params[:id]
-			@item_data_content = ItemDataContent.find(params[:id])
+		#go from pages index to edit page content
+		if params[:page_id]
+			@page = Page.find(params[:page_id])
+		#load some textual content
+		elsif params[:content_id]
+			@item_data_content = ItemDataContent.find(params[:content_id])
 			@page = @item_data_content.item.page
-		else
-			@page = Page.find(Item.find(ItemDataContent.find(params[:item_id]).item_id).page_id)
-			@theme_item = @page.theme.theme_items.find_by_item_kind('Bilder')
-			unless @theme_item.nil?
-				@item = Item.find_by_page_id_and_theme_item_id(@page.id, @theme_item.id)
-			end
+		#load a theme item like a image gallery
+		elsif params[:item_id]
+			@item = Item.find(params[:item_id])
+			@page = Page.find(@item.page_id)
+		elsif params[:from_asset]
+			@item = Item.find(Asset.find(params[:from_asset]).collection_id)
+			@page = Page.find(@item.page_id)
+			@click = "true"
 		end
 		render :layout => '/layouts/pages'
 	end
