@@ -54,7 +54,9 @@ class ThemesController < ApplicationController
 		@theme = Theme.find(params[:theme_id])
 		the_file = ThemeUpload.find_by_theme_file_file_name_and_theme_id(params[:name].to_s, params[:theme_id].to_s)
 		@the_path = the_file.theme_file.path
-		until File.new(@the_path).read.length > 0
+		if params[:content_length]
+			until File.new(@the_path).read.length.to_s.eql?(params[:content_length].to_s)
+			end
 		end
 		@content = File.new(@the_path).read
 	end
@@ -62,7 +64,7 @@ class ThemesController < ApplicationController
 	def upload_files_update
 		the_file = File.open(params[:the_path], 'w')
 		the_file.write(params[:file_edit])
-		redirect_to "/upload_files_eiditing?theme_id=#{params[:theme]}&name=#{the_file.original_filename}"
+		redirect_to "/upload_files_eiditing?theme_id=#{params[:theme]}&name=#{the_file.original_filename}&content_length=#{params[:file_edit].to_s.length}"
 	end
 	
 end
