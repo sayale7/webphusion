@@ -23,7 +23,7 @@ class Page < ActiveRecord::Base
 	def added_languages
 		the_languages = Array.new
 		Localizable.find_all_by_localizable_type_and_localizable_id('Page', self.id).each do |lang|
-			the_languages.push(Language.find(lang.language_id).long_language)
+			the_languages.push(Language.find(lang.language_id))
 		end
 		return the_languages
 	end
