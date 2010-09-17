@@ -1,7 +1,25 @@
 //content
 <% if @item_data_content %>
 $('#item_data_content_form').html("<%= escape_javascript(render('/item_datas/edit_content')) %>");
-$('#item_data_content_content').ckeditor();
+var options = {
+                toolbar:
+                   [
+											['Source','-','Templates'],
+									    ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print', 'SpellChecker', 'Scayt'],
+									    ['Undo','Redo','-','Find','Replace'],
+									    '/',
+									    ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
+									    ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'],
+									    ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+									    ['Link','Unlink','Anchor'],
+									    ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+									    '/',
+									    ['Styles','Format','Font','FontSize'],
+									    ['TextColor','BGColor'],
+									    ['Maximize', 'ShowBlocks']
+                   ]
+            };
+            $('#item_data_content_content').ckeditor(function() { /* callback code */ }, options);
 
 //item
 <% elsif @item %>
