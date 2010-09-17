@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  localizable_type: MyString
+  localizable_id: 1
+  language_id: 1
+
+two:
+  localizable_type: MyString
+  localizable_id: 1
+  language_id: 1

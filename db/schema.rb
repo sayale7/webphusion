@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100913204432) do
+ActiveRecord::Schema.define(:version => 20100917083406) do
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at"
@@ -66,6 +66,20 @@ ActiveRecord::Schema.define(:version => 20100913204432) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active",        :default => true
+  end
+
+  create_table "languages", :force => true do |t|
+    t.string   "language"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "localizables", :force => true do |t|
+    t.string   "localizable_type"
+    t.integer  "localizable_id"
+    t.integer  "language_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pages", :force => true do |t|

@@ -45,6 +45,7 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(params[:page])
 		@page.position = current_user.pages.find_all_by_parent_id(@page.parent_id).size
+		@page.manage_locales(params[:page][:languages])
     if @page.save
     	@pages = current_user.pages.find_all_by_parent_id(nil)
       render :template => '/pages/index'
@@ -70,6 +71,7 @@ class PagesController < ApplicationController
 			@page.update_attribute(:position, current_user.pages.find_all_by_parent_id(@page.parent_id).size - 1)
 		end
     @pages = current_user.pages.find_all_by_parent_id(nil, :order => 'position')
+		@page.manage_locales(params[:languages])
     render :template => '/pages/index'
   end
   
