@@ -10,7 +10,7 @@ class Page < ActiveRecord::Base
 
 	def manage_locales(locales)
 		Language.all.each do |lang|
-			if locales.include?(lang.language)
+			if !locales.nil? and locales.include?(lang.language)
 				Localizable.find_or_create_by_localizable_id_and_language_id_and_localizable_type(:localizable_id => self.id, :language_id => lang.id, :localizable_type => "Page")
 			else
 				if is_added_language(lang.id)
