@@ -20,6 +20,7 @@ de:
     confirm: Sind Sie sicher, dass Sie löschen wollen?
     name: Name
     cancel: Abrechen
+    none: Keine
   authentication:
     login: Einloggen
     logout: Ausloggen
@@ -74,6 +75,8 @@ de:
     reorder_sub_level: Reihenfolge ändern
     my_sites: Meine Seiten
     reorder: Seitenreihenfolge per Drag & Drop ändern
+    available_languages: Übersetzungslinks der Seite
+    common: Allgemeines der Seite
   messages:
     cannot_destroy_theme: Dieses Layout kann nur gelöscht werden, wenn es durch keine der Seiten referenziert wird. Ansonsten können wichtige Daten verloren gehen!
   theme:
