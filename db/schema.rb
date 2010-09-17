@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20100917083406) do
 
   create_table "languages", :force => true do |t|
     t.string   "language"
+		t.string   "long_language"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
