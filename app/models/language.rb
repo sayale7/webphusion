@@ -1,3 +1,3 @@
 class Language < ActiveRecord::Base
-	liquid_mehtods :language, :long_language
+	liquid_methods :language, :long_language
 end
