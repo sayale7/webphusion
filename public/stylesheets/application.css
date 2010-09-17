@@ -178,7 +178,7 @@ li{
 	width:18%;
 	padding:1%;
 	height:100%;
-	background:#CCFFCC; /*alternative Hintergrundfarbe für IE*/
+	background:#ccc; /*alternative Hintergrundfarbe für IE*/
 	background: -webkit-gradient(radial, 50% 50%, 100, 50% 50%, 350, from(#8D8A8D), to(#77767C));
 	background: -moz-radial-gradient(center 50%,circle,#8D8A8D 10%,#77767C 70%);
 	position:fixed;	
