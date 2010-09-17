@@ -65,7 +65,9 @@ de:
     no_items: Wählen Sie bitte ein Element aus
   page:
     new: Neue Seite anlegen
-    title: Seitentitel
+    title: Browsertitel
+    description: Beschreibung
+    keywords: Schlüsselwörter
     parent: Elternseite
     no_template: Sie haben keine Layouts zur Auswahl. Bitte legen Sie ein Layout an um eine neue Seite anlegen zu können
     no_items_available: Sie haben keine Elemente in Ihrem Layout die befüllt werden könnten. Bitte wenden Sie sich an Ihren Administrator
@@ -77,6 +79,9 @@ de:
     reorder: Seitenreihenfolge per Drag & Drop ändern
     available_languages: Übersetzungslinks der Seite
     common: Allgemeines der Seite
+    name: Seitenname
+    common_info: Allgemeine Infos
+    advanced_info: Spezifische Infos
   messages:
     cannot_destroy_theme: Dieses Layout kann nur gelöscht werden, wenn es durch keine der Seiten referenziert wird. Ansonsten können wichtige Daten verloren gehen!
   theme:

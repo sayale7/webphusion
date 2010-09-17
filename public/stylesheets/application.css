@@ -65,6 +65,12 @@ input[type=text], input[type=password]{
 	width:250px;
 }
 
+#dark {
+	background:#ccc;
+	background:-moz-radial-gradient(center, #ccc, #fff); /* Firefox */
+	background:-webkit-gradient(radial, center center, 80, center center, 400, from(#ccc), to(#fff)); /* Safari, Chrome */
+}
+
 a.button_link {
 	background:#DFDFDF;
 	background:-moz-radial-gradient(center, #E1E1E1, #E1E1E1); /* Firefox */
@@ -413,4 +419,5 @@ li{
 
 .page_info_section{
 	padding:5px;
+	width:450px;
 }

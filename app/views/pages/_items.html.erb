@@ -15,14 +15,34 @@
 <% end %>
 
 <% unless @page.items_by_theme('Bilder').empty? %>
-<h3><%= t('item_data.image_gallery') %></h3>
+	<h3><%= t('item_data.image_gallery') %></h3>
+	<% @page.items_by_theme('Bilder').each do |item| %>
+		<div class="full" id="item_<%= item.id %>">
+			<%= link_to item.theme_item.name, "/edit_content?item_id=#{item.id}", :remote => true %>
+		</div>
+	<% end %>
 <% end %>
-<% @page.items_by_theme('Bilder').each do |item| %>
-	<div class="full" id="item_<%= item.id %>">
-		<%= link_to item.theme_item.name, "/edit_content?item_id=#{item.id}", :remote => true %>
+
+
+
+
+<% unless @page.items_by_theme('Einzeiler').empty? %>
+<h3><%= t('page.advanced_info') %></h3>
+<% end %>
+<% @page.items_by_theme('Einzeiler').each do |item| %>
+	<div class="full">
+		<%= link_to item.theme_item.name, '#', :class => 'data_items' %>
+		<div id="data_item_contents_<%= item.id %>" class="hidden page_languages">
+			<% item.item_data_contents.each do |content| %>
+				 <%= link_to get_long_version(content.locale), "/edit_content?simple_item_id=#{content.id}", :remote => true %>
+			<% end %>
+		</div>
 	</div>
 <% end %>
+
 </div>
+
+
 
 <% if @click %>
 <script type="text/javascript" charset="utf-8">

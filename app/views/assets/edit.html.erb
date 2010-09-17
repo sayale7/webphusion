@@ -1,6 +1,18 @@
-<%= render '/shared/simple_tiny' %>
+<% content_for :head do %>
+<script type="text/javascript" src="/javascripts/ckeditor/ckeditor.js"></script> 
+<script type="text/javascript" src="/javascripts/ckeditor/adapters/jquery.js"></script>
+<% end %>
 <%= form_tag asset_path(@asset), :method => :put do  %>
 	<%= hidden_field_tag 'language', @asset_description.language %>
 	<%= text_area_tag 'description', @asset_description.content, :class => 'tinymce' %><br/>
 	<p><%= submit_tag t('common.save') %> <%= link_to t('common.cancel'), "/edit_content?from_asset=#{@asset.id}", :class => 'button_link' %></p>
 <% end %>
+<script type="text/javascript" charset="utf-8">
+	var options = {
+	                toolbar:
+	                   [
+										    ['Bold','Italic','Underline','Strike','Link','Unlink']
+	                   ]
+	            };
+	            $('#description').ckeditor(function() { /* callback code */ }, options);
+</script>

@@ -37,7 +37,7 @@ module ApplicationHelper
 	end
 	
 	def theme_item_kinds
-		%w[Text Bilder]
+		%w[Text Bilder Einzeiler]
 	end
 	
 	def clippy(text, bgcolor='#fff')

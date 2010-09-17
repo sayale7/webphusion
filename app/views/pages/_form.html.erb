@@ -8,25 +8,40 @@
 </div>
 
 <div class="page_info_section">
-	<h3><%= t('page.common') %></h3>		
+	<h3><%= t('page.common') %></h3>	
+	<%= f.hidden_field :website_id, :value => current_user.id %>
 	<%= hidden_field_tag :item_content %>
 	<%= hidden_field_tag :item_content_id %>
-   <%= f.label :theme_id, t('common.theme') %>
-   <%= f.select :theme_id, current_user.themes.all.collect {|theme| [ theme.name, theme.id ] } %>
-	<% unless has_children(@page) %>
-   <%= f.label :parent_id, t('page.parent') %>
-   <%= f.select :parent_id, (current_user.pages.find_all_by_parent_id(nil) - @page.to_a).collect {|page| [ page.name, page.id ] }, :include_blank => t('common.none') %>
-	<% end %>
-	<%= f.hidden_field :website_id, :value => current_user.id %>
-	<%= f.label :active, t('common.active') %>
-	<%= f.check_box :active  %>
+	<table>
+		<tr>
+			<td><%= f.label :name, t('page.name') %></td>
+			<td><%= f.text_field :name %></td>
+			<td><%= f.label :active, t('common.active') %></td>
+			<td><%= f.check_box :active  %></td>
+		</tr>
+		
+		
+		<tr>
+			<td><%= f.label :theme_id, t('common.theme') %></td>
+			<td><%= f.select :theme_id, current_user.themes.all.collect {|theme| [ theme.name, theme.id ] } %></td>
+			<td></td>
+			<td></td>
+		</tr>
+		
+		<% unless has_children(@page) %>
+		<tr>
+			<td><%= f.label :parent_id, t('page.parent') %></td>
+			<td><%= f.select :parent_id, (current_user.pages.find_all_by_parent_id(nil) - @page.to_a).collect {|page| [ page.name, page.id ] }, :include_blank => t('common.none') %></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<% end %>
+		
+	</table>	
+
 </div>
-<div class="page_info_section">    
-	<%= f.label :name, t('common.name') %>
-  <%= f.text_field :name %>
-  <%= f.label :title, t('page.title') %>
-  <%= f.text_field :title %>
-</div>
+
+
 <p>
 	<%= f.submit t('common.save') %>
 </p>

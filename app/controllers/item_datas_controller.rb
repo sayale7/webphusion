@@ -30,6 +30,9 @@ class ItemDatasController < ApplicationController
 			@item = Item.find(Asset.find(params[:from_asset]).collection_id)
 			@page = Page.find(@item.page_id)
 			@click = "true"
+		elsif params[:simple_item_id]
+			@simple_item = ItemDataContent.find(params[:simple_item_id])
+			@page = @simple_item.item.page
 		end
 		render :layout => '/layouts/pages'
 	end

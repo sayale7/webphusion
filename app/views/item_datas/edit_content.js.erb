@@ -1,7 +1,8 @@
 //content
 <% if @item_data_content %>
-$('#item_data_content_form').html("<%= escape_javascript(render('/item_datas/edit_content')) %>");
-var options = {
+	<% unless @item_data_content.item.theme_item.item_kind.to_s.eql?('Einzeiler') %>
+	$('#item_data_content_form').html("<%= escape_javascript(render('/item_datas/edit_content')) %>");
+	var options = {
                 toolbar:
                    [
 											['Source','-','Templates'],
@@ -20,8 +21,12 @@ var options = {
                    ]
             };
             $('#item_data_content_content').ckeditor(function() { /* callback code */ }, options);
-
+	<% else %>
+		$('#item_data_content_form').html("<%= escape_javascript(render('/item_datas/simple_item')) %>");
+	<% end %>
 //item
 <% elsif @item %>
 $('#item_data_content_form').html("<%= escape_javascript(render('/item_datas/item')) %>");
+<% elsif @simple_item %>
+$('#item_data_content_form').html("<%= escape_javascript(render('/item_datas/simple_item')) %>");
 <% end %>

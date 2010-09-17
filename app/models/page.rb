@@ -5,8 +5,10 @@ class Page < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :theme
 	has_many :items, :dependent => :destroy
+	has_many :linked_page_items
+	has_many :page_items, :through => :linked_page_items
   # has_many :theme_items, :through => :items
-	after_save :update_items_for_theme
+	after_save :update_items_for_theme, :attach_page_items
 
 	def manage_locales(locales)
 		Language.all.each do |lang|
@@ -74,5 +76,12 @@ class Page < ActiveRecord::Base
 			Item.find_or_create_by_theme_item_id_and_page_id(theme_item.id, self.id)
 		end
 	end
+	
+	def attach_page_items
+		PageItem.all.each do |page_item|
+			LinkedPageItem.find_or_create_by_page_id_and_page_item_id(:page_id => self.id, :page_item_id => page_item.id)
+		end
+	end
+
 	
 end

@@ -1,0 +1,10 @@
+<div style="clear:both">
+	<%= form_for @simple_item, :url => "/update_item_data_contents?id=#{@simple_item.id}", :remote => true do |f| %>
+		<%= f.hidden_field :locale, :value => @simple_item.locale %>
+		<%= f.hidden_field :name, :value => @simple_item.name %>
+		<%= f.text_field :content, :id => 'dark' %>
+		<p>
+			<%= f.submit t('common.save') %>
+		</p>
+	<% end %>
+</div>
