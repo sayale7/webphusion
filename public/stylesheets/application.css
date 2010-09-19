@@ -158,7 +158,7 @@ li{
 	width:100%;
 	height:15px;
 	text-align:right;
-	background:#282828;
+	background:#555;
 	background: -webkit-gradient(radial, 50% 50%, 100, 50% 50%, 350, from(#8D8A8D), to(#77767C));
 	background: -moz-radial-gradient(center 50%,circle,#8D8A8D 10%,#77767C 70%);
 	text-shadow: 1px 1px 2px #000;
@@ -184,7 +184,7 @@ li{
 	width:18%;
 	padding:1%;
 	height:100%;
-	background:#ccc; /*alternative Hintergrundfarbe für IE*/
+	background:#555; /*alternative Hintergrundfarbe für IE*/
 	background: -webkit-gradient(radial, 50% 50%, 100, 50% 50%, 350, from(#8D8A8D), to(#77767C));
 	background: -moz-radial-gradient(center 50%,circle,#8D8A8D 10%,#77767C 70%);
 	position:fixed;	
@@ -394,6 +394,8 @@ li{
 	width:350px;
 	padding:20px;
 	background:#DFDFDF;
+	background-image:url("/images/accountbg.jpg");
+	background-repeat:repeat-x;
 	background:-moz-linear-gradient(top, #DE8056, #8F5237); /* Firefox */
 	background:-webkit-gradient(linear, left top, left bottom, from(#DE8056), to(#8F5237)); /* Safari, Chrome */
 	border: 0.7pt solid #282828;
