@@ -23,6 +23,6 @@
 	<div class="image"><%= image_tag('/images/movie.jpg', :width => 55, :height => 45) %></div>
 	<div class="info" style="width:100px; overfow:scroll;"><p><%= link_to common_file.asset_file.original_filename, common_file.asset_file.url, :class => 'popup'  %></p></div>
 	<div class="info"><p>(<%= common_file.asset_file.size / 1000 %> kB / <%= common_file.created_at.strftime('%d.%m.%y') %>)</p></div>
-	<div class="info"><p><%= raw clippy(common_file.asset_file.url.to_s[0, common_file.asset_file.url.to_s.length - 11]) %></p></div>
+	<div class="info"><p><%= raw clippy("http://webphusion.com/#{common_file.asset_file.url.to_s[0, common_file.asset_file.url.to_s.length - 11]}") %></p></div>
 </div>
 <% end %>
