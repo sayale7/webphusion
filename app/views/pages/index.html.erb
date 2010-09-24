@@ -1,8 +1,16 @@
+<% if @page_kind.to_s.eql?('Page') %>
 <h1><%= t('page.my_sites') %></h1>
+<% else %>
+<h1><%= t('page.my_newsletters') %></h1>
+<% end %>
 
 <div id="pages">
 	<%= render '/pages/pages' %>
 </div>
 
 
-<p><%= link_to t('page.new'), new_page_path, :class => 'ajax' %></p>
+<% if @page_kind.to_s.eql?('Page') %>
+<p><%= link_to t('page.new'), new_page_path(:page_kind => @page_kind), :class => 'ajax' %></p>
+<% else %>
+<p><%= link_to t('page.new_newsletter'), new_page_path(:page_kind => @page_kind), :class => 'ajax' %></p>
+<% end %>

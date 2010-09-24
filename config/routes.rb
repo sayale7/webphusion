@@ -1,5 +1,7 @@
 Easywebman::Application.routes.draw do |map|
   
+  resources :newsletters
+
   devise_for :users, :path_names => { :sign_up => "register" }
 
 	resources :assets do
@@ -38,8 +40,10 @@ Easywebman::Application.routes.draw do |map|
 	match "/add_item_to_page" =>  "pages#add_item_to_page"
 	match "/remove_item_from_page" =>  "pages#remove_item_from_page"
 	match "/reorder_pages" => "pages#reorder_pages"
-	
 	match "/pages/new" => "pages#new"
+	match "/edit_recipient" => "recipients#edit"
+	match "/destroy_recipient" => "recipients#destroy"
+	match "/deliver_newsletter" => "pages#deliver_newsletter"
 	
 	constraints(Subdomain) do  
     match '/' => 'pages#show'
@@ -50,7 +54,9 @@ Easywebman::Application.routes.draw do |map|
 		resources :home
 	end
 	
-	resources :pages, :except => [:show]
+	resources :pages, :except => [:show] do
+		resources :recipients
+	end
 
   root :to => "home#index"
 end

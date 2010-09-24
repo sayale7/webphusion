@@ -7,6 +7,7 @@ class Page < ActiveRecord::Base
 	has_many :items, :dependent => :destroy
 	has_many :linked_page_items
 	has_many :page_items, :through => :linked_page_items
+	has_many :recipients
   # has_many :theme_items, :through => :items
 	after_save :update_items_for_theme, :attach_page_items
 

@@ -395,6 +395,15 @@ li{
 #root li ul.sub li .span-left { font-weight:bold; font-size:18px; color:orange;	 }
 #root li ul.sub li .span-right {}
 
+#newsletter { list-style-type: none; margin: 0; padding: 0; color:#000; }
+#newsletter li { margin-top: 15px; margin-bottom: 15px; }
+#newsletter li .span-left { font-weight:bold; font-size:18px; color:#303030; width:600px; display: inline-block;}
+#newsletter li .span-right { }
+#newsletter li ul.sub { list-style-type: none;  padding: 0;  }
+#newsletter li ul.sub li { margin-top: 15px; margin-bottom: 15px; padding-left: 3.5em;   }
+#newsletter li ul.sub li .span-left { font-weight:bold; font-size:18px; color:orange;	 }
+#newsletter li ul.sub li .span-right {}
+
 #nice_form{
 	width:350px;
 	padding:20px;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100917160050) do
+ActiveRecord::Schema.define(:version => 20100924124403) do
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at"
@@ -108,6 +108,15 @@ ActiveRecord::Schema.define(:version => 20100917160050) do
     t.integer  "parent_id"
     t.string   "name"
     t.integer  "position"
+    t.string   "page_kind"
+  end
+
+  create_table "recipients", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "page_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "theme_items", :force => true do |t|

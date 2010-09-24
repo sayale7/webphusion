@@ -4,6 +4,8 @@
 <h3><%= t('item_data.text_items') %></h3>
 <% end %>
 <% @page.items_by_theme('Text').each do |item| %>
+
+	<% if @page.page_kind.to_s.eql?('Page') %>
 	<div class="full">
 		<%= link_to item.theme_item.name, '#', :class => 'data_items' %>
 		<div id="data_item_contents_<%= item.id %>" class="hidden page_languages">
@@ -12,6 +14,12 @@
 			<% end %>
 		</div>
 	</div>
+	<% else %>
+	<div class="full">
+		<% content = item.item_data_contents.find_by_locale('de') %>
+		<%= link_to item.theme_item.name, "/edit_content?content_id=#{content.id}", :remote => true %>
+	</div>
+	<% end %>
 <% end %>
 
 <% unless @page.items_by_theme('Bilder').empty? %>

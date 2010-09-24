@@ -49,6 +49,7 @@ de:
     layout_management: Layout-Verwaltung
     page_management: Seiten-Verwaltung
     new_theme: Neues Layout
+    newsletter_management: Meine Newsletter
   theme_item:
     new: Neues Element anglegen
     name: Name
@@ -82,6 +83,13 @@ de:
     name: Seitenname
     common_info: Allgemeine Infos
     advanced_info: Spezifische Infos
+    my_newsletters: Meine Newsletter
+    newsletter_name: Name
+    new_newsletter: Neuer Newsletter
+    newsletter_recipients: Empfänger bearbeiten
+    new_recipient: Neuen Empfänger hinzufügen
+    confirm_newsletter_deliver: Newsletter abschicken?
+    deliver_newsletter: Newsletter verschicken
   messages:
     cannot_destroy_theme: Dieses Layout kann nur gelöscht werden, wenn es durch keine der Seiten referenziert wird. Ansonsten können wichtige Daten verloren gehen!
   theme:

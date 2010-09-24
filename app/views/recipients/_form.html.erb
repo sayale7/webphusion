@@ -1,0 +1,14 @@
+<%= form_for [@page, @recipient], :remote => false do |f| %>	
+	<%= f.hidden_field :page_id, :value => @page.id %>
+	<p>	
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</p>
+	<p>	
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</p>
+	<p>
+		<%= f.submit t('common.create') %>
+	</p>
+<% end %>

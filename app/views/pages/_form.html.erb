@@ -1,23 +1,31 @@
 <%= form_for @page, :remote => true do |f| %>
-
+<%= f.hidden_field :page_kind, :value => @page_kind %>
+<% if @page_kind.to_s.eql?('Page') %>
 <div class="page_info_section">
 	<h3><%= t('page.available_languages') %></h3>
 	<% for language in Language.all.each do %>
 		<%= check_box_tag "languages[]", language.language, @page.is_added_language(language.id) %><%= language.language %>
 	<% end %>
 </div>
+<% end %>
 
-<div class="page_info_section">
-	<h3><%= t('page.common') %></h3>	
+<div class="page_info_section">	
 	<%= f.hidden_field :website_id, :value => current_user.id %>
 	<%= hidden_field_tag :item_content %>
 	<%= hidden_field_tag :item_content_id %>
+	
 	<table>
 		<tr>
+			<% if @page_kind.to_s.eql?('Page') %>
+			<h3><%= t('page.common') %></h3>
 			<td><%= f.label :name, t('page.name') %></td>
 			<td><%= f.text_field :name %></td>
 			<td><%= f.label :active, t('common.active') %></td>
 			<td><%= f.check_box :active  %></td>
+			<% else %>
+			<td><%= f.label :name, t('page.newsletter_name') %></td>
+			<td><%= f.text_field :name %></td>
+			<% end %>
 		</tr>
 		
 		
@@ -28,7 +36,7 @@
 			<td></td>
 		</tr>
 		
-		<% unless has_children(@page) %>
+		<% if !has_children(@page) and @page_kind.to_s.eql?('Page') %>
 		<tr>
 			<td><%= f.label :parent_id, t('page.parent') %></td>
 			<td><%= f.select :parent_id, (current_user.pages.find_all_by_parent_id(nil) - @page.to_a).collect {|page| [ page.name, page.id ] }, :include_blank => t('common.none') %></td>

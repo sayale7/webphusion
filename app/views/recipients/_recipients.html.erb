@@ -1,0 +1,11 @@
+<ul id="newsletter">
+	<% @page.recipients.each do |recipient| %>
+		<li>
+			<span class="span-left"><%= recipient.name %> - <%= recipient.email %></span>
+			<span class="span-right"> 
+				<%= link_to t('common.edit'), "/edit_recipient?id=#{recipient.id}", :class => 'ajax edit_link  button_link' %>
+				<%= link_to t('common.delete'), "/destroy_recipient?id=#{recipient.id}", :method => :delete, :confirm => t('common.confirm'), :class => 'edit_link  button_link' %>
+			</span>
+			</li>
+	<% end %>
+</ul>

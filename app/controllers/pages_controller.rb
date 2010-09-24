@@ -4,11 +4,12 @@ class PagesController < ApplicationController
 	layout '/layouts/pages'	
 
 	def index
+		@page_kind = params[:page_kind].to_s
 		if request.url.include?('page_ids')
 			params[:page_ids].each_with_index do |page_id, index|
 				Page.find(page_id).update_attribute(:position, index)
 			end
-			redirect_to '/pages?parent=none'
+			redirect_to '/pages?parent=none&page_kind=Page'
 		else
 			parent = ""
 			if params[:parent] == "none"
@@ -20,7 +21,7 @@ class PagesController < ApplicationController
 				flash[:info] = t('page.no_template')
 				redirect_to themes_url
 			else
-				@pages = current_user.pages.find_all_by_parent_id(parent, :order => 'position')
+				@pages = current_user.pages.find_all_by_parent_id_and_page_kind(parent, params[:page_kind].to_s, :order => 'position')
 				render :layout => '/layouts/application'
 			end
 		end
@@ -39,15 +40,16 @@ class PagesController < ApplicationController
   
   def new
     @page = Page.new
+    @page_kind = params[:page_kind].to_s
 		render :layout => '/layouts/popup'
   end
   
   def create
     @page = Page.new(params[:page])
-		@page.position = current_user.pages.find_all_by_parent_id(@page.parent_id).size
+		@page.position = current_user.pages.find_all_by_parent_id_and_page_kind(@page.parent_id, @page.page_kind).size
 		@page.manage_locales(params[:page][:languages])
     if @page.save
-    	@pages = current_user.pages.find_all_by_parent_id(nil)
+    	@pages = current_user.pages.find_all_by_parent_id_and_page_kind(nil, @page.page_kind)
       render :template => '/pages/index'
     else
       render :action => 'new'
@@ -56,29 +58,35 @@ class PagesController < ApplicationController
   
   def edit
     @page = Page.find(params[:id])
+		@page_kind = @page.page_kind
 		render :layout => '/layouts/popup'
   end
   
   def update
     @page = Page.find(params[:id])
 		@theme = Theme.find(@page.theme_id)
-		different_level = @page.parent_id.to_s.eql?(params[:page][:parent_id].to_s)
-		unless different_level
-			update_postions_in_old_level
+		if @page.page_kind.to_s.eql?('Page')
+			different_level = @page.parent_id.to_s.eql?(params[:page][:parent_id].to_s)
+			unless different_level
+				update_postions_in_old_level
+			end
 		end
 		@page.update_attributes(params[:page])
-		unless different_level
-			@page.update_attribute(:position, current_user.pages.find_all_by_parent_id(@page.parent_id).size - 1)
+		if @page.page_kind.to_s.eql?('Page')
+			unless different_level
+				@page.update_attribute(:position, current_user.pages.find_all_by_parent_id(@page.parent_id).size - 1)
+			end
 		end
-    @pages = current_user.pages.find_all_by_parent_id(nil, :order => 'position')
+    @pages = current_user.pages.find_all_by_parent_id_and_page_kind(nil, @page.page_kind, :order => 'position')
 		@page.manage_locales(params[:languages])
     render :template => '/pages/index'
   end
   
   def destroy
     @page = Page.find(params[:id])
+		the_kind = @page.page_kind
     @page.destroy
-    redirect_to pages_url
+    redirect_to pages_url(:page_kind => the_kind)
   end
 
 	def reorder_pages
@@ -88,6 +96,14 @@ class PagesController < ApplicationController
 			@pages = current_user.pages.find_all_by_parent_id(nil, :order => 'position')
 		end
 		render :layout => '/layouts/application'
+	end
+	
+	def deliver_newsletter
+		page = Page.find(params[:id])
+		page.recipients.each do |recipient|
+			NewsletterMailer.newsletter(recipient, page).deliver
+		end
+		redirect_to pages_url(:page_kind => page.page_kind)
 	end
 
 	# def add_item_to_page
@@ -112,7 +128,7 @@ class PagesController < ApplicationController
 	private
 	
 	def update_postions_in_old_level
-		pages = current_user.pages.find_all_by_parent_id(@page.parent_id, :order => 'position') - @page.to_a
+		pages = current_user.pages.find_all_by_parent_id_and_page_kind(@page.parent_id, 'Page', :order => 'position') - @page.to_a
 		pages.each_with_index do |page, index|
 			page.update_attribute(:position, index)
 		end
