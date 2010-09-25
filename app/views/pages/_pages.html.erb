@@ -10,6 +10,7 @@
 			<% if page.page_kind.to_s.eql?('Newsletter') %>
 				<%= link_to t('page.newsletter_recipients'), page_recipients_url(page), :class => 'edit_link button_link' %>
 				<%= link_to t('page.deliver_newsletter'), "/deliver_newsletter?id=#{page.id}",  :confirm => t('page.confirm_newsletter_deliver'), :class => 'edit_link  button_link' %>
+				<%= link_to t('page.show_newsletter'), "http://#{current_user.subdomain}.#{request.domain}/pages/#{page.id}",  :class => 'edit_link  button_link popup' %>
 			<% end %>
 			<%= link_to t('common.delete'), page, :method => :delete, :confirm => t('common.confirm'), :class => 'edit_link  button_link' %>
 			<% if index == 0 and page.page_kind.to_s.eql?('Page') %>

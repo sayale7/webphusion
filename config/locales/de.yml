@@ -90,6 +90,7 @@ de:
     new_recipient: Neuen Empfänger hinzufügen
     confirm_newsletter_deliver: Newsletter abschicken?
     deliver_newsletter: Newsletter verschicken
+    show_newsletter: Newsletter anzeigen
   messages:
     cannot_destroy_theme: Dieses Layout kann nur gelöscht werden, wenn es durch keine der Seiten referenziert wird. Ansonsten können wichtige Daten verloren gehen!
   theme:
