@@ -39,7 +39,7 @@ de:
     we_need_current_password: Wir benötigen Ihr Passwort zum Bestätigen der Änderungen #we need your current password to confirm your changes
   file_upload:
     upload_images: Bilder hinzufügen
-    upload_common_files: Filemanager
+    upload_common_files: Files auswählen
     theme_upload: Theme Files hinzufügen
     uploade_at: Raufgeladen am
     copy_to_area: Bild einfügen
