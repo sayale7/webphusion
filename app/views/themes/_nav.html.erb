@@ -1,15 +1,25 @@
-<h3><%= link_to @theme.name, edit_theme_path(@theme) %></h3>
+<h3><%= t('theme.items') %></h3>
+<ul>
+	<li>
+		<%= link_to t('theme_item.new'), "/theme_items/new?id=#{@theme.id}", :class => 'ajax' %>
+	</li>
+</ul>
+
+<div id="theme_items">
+	<%= render '/theme_items/theme_items' %>
+</div>
+
+<h3><%= t('theme.layout_file') %></h3>
+<ul>
+	<li>
+		<%= link_to @theme.name, edit_theme_path(@theme) %>
+	</li>
+</ul>
+
+<h3><%= t('theme.files') %></h3>
 
 <div id="theme_uploads">
 	<%= render '/themes/theme_uploads' %>
 </div>
 
 
-<ul>
-	<li>
-		<%= link_to t('theme_item.new'), "/theme_items/new?id=#{@theme.id}", :class => 'ajax' %>
-	</li>
-</ul>
-<div id="theme_items">
-	<%= render '/theme_items/theme_items' %>
-</div>

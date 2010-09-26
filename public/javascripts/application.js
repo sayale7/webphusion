@@ -35,6 +35,7 @@ $(document).ready(function(){
 		$('.image_gallery').fadeIn('slow');
 	});
 	
+	
 	var the_margin = (($(document).width()/2) - $('#nice_form').width()/1.5) + "px";
 	$('#nice_form').css('margin-left', the_margin);
 	

@@ -8,9 +8,9 @@
 	<%= render '/pages/pages' %>
 </div>
 
-
+<div style="clear:both;">
 <% if @page_kind.to_s.eql?('Page') %>
 <p><%= link_to t('page.new'), new_page_path(:page_kind => @page_kind), :class => 'ajax' %></p>
 <% else %>
 <p><%= link_to t('page.new_newsletter'), new_page_path(:page_kind => @page_kind), :class => 'ajax' %></p>
-<% end %>
+<% end %></div>

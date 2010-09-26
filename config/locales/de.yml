@@ -95,6 +95,9 @@ de:
     cannot_destroy_theme: Dieses Layout kann nur gelöscht werden, wenn es durch keine der Seiten referenziert wird. Ansonsten können wichtige Daten verloren gehen!
   theme:
     updated: Die Änderungen am Layout wurden gespeichert
+    items: Theme Elemente
+    layout_file: Theme Layout File
+    files: Theme Files
   language:
     de: Deutsch
     en: Englisch

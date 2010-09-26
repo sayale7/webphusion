@@ -2,6 +2,7 @@
 <% if @item_data_content %>
 	<% unless @item_data_content.item.theme_item.item_kind.to_s.eql?('Einzeiler') %>
 	$('#item_data_content_form').html("<%= escape_javascript(render('/item_datas/edit_content')) %>");
+	var hoehe = $(window).height() - 300;
 	var options = {
                 toolbar:
                    [
@@ -18,7 +19,8 @@
 									    ['Styles','Format','Font','FontSize'],
 									    ['TextColor','BGColor'],
 									    ['Maximize', 'ShowBlocks']
-                   ]
+                   ],
+								height : hoehe
             };
             $('#item_data_content_content').ckeditor(function() { /* callback code */ }, options);
 	<% else %>
