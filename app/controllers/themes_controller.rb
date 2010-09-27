@@ -58,6 +58,7 @@ class ThemesController < ApplicationController
 			until File.new(@the_path).read.length.to_s.eql?(params[:content_length].to_s)
 			end
 		end
+		@mime_type = the_file.theme_file_content_type
 		@content = File.new(@the_path).read
 	end
 	

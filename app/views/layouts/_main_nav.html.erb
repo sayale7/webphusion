@@ -3,7 +3,9 @@
 		<%= link_to t('navigation.layout_management'), themes_path %> 
 	<% end %>
 	<%= link_to t('navigation.page_management'), pages_path(:parent => 'none', :page_kind => 'Page') %>
+	<% if current_user.id == 9 %>
 	<%= link_to t('navigation.newsletter_management'), pages_path(:parent => 'none', :page_kind => 'Newsletter') %> 
+	<% end %>
   <%= link_to t('authentication.account'), edit_user_registration_path %> 
 	<%= link_to t('authentication.logout'), destroy_user_session_path %> 
 	

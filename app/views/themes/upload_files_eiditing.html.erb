@@ -4,6 +4,7 @@
 <% end %>
 <%= javascript '/codemirror/js/codemirror' %>
 <style type="text/css"> 
+
 .CodeMirror-line-numbers {
 	width: 2.2em;
 	color: #aaa;
@@ -16,13 +17,34 @@
 }
 </style> 
 
-<script type="text/javascript"> 
-CodeMirror.fromTextArea('code', {
-	height: "600px",
-	parserfile: "parseliquid.js"  ,
-	stylesheet: ["/codemirror/css/xmlcolors.css", "/stylesheets/liquidcolors.css"],
-	path: "/codemirror/js/",
-	textWrapping: false,
-	lineNumbers: true
-});
+<% if @mime_type.eql?('text/css') %>
+<script type="text/javascript">
+	var the_height = $(window).height() - 130;
+	var the_height = the_height.toString() + 'px';
+  CodeMirror.fromTextArea('code', {
+    height: the_height,
+    parserfile: "parsecss.js",
+    stylesheet: "/codemirror/css/csscolors.css",
+    path: "/codemirror/js/",
+		textWrapping: true,
+		lineNumbers: true
+  });
 </script>
+
+<% else %>
+
+<script type="text/javascript">
+	var the_height = $(window).height() - 130;
+	var the_height = the_height.toString() + 'px';
+	CodeMirror.fromTextArea('code', {
+		height: the_height,
+    parserfile: ["tokenizejavascript.js", "parsejavascript.js"],
+    stylesheet: "/codemirror/css/jscolors.css",
+    path: "/codemirror/js/",
+    autoMatchParens: true,
+		textWrapping: true,
+		lineNumbers: true
+	});
+</script>
+
+<% end %>
