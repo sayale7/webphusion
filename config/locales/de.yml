@@ -40,7 +40,7 @@ de:
   file_upload:
     upload_images: Bilder hinzufügen
     upload_common_files: Files auswählen
-    theme_upload: Theme Files hinzufügen
+    theme_upload: Template Filemanager
     uploade_at: Raufgeladen am
     copy_to_area: Bild einfügen
     upload: Bilder Manager
@@ -90,14 +90,19 @@ de:
     new_recipient: Neuen Empfänger hinzufügen
     confirm_newsletter_deliver: Newsletter abschicken?
     deliver_newsletter: Newsletter verschicken
-    show_newsletter: Newsletter anzeigen
+    show_newsletter: Newsletter 
+    common_file_manager: Filemanager
   messages:
     cannot_destroy_theme: Dieses Layout kann nur gelöscht werden, wenn es durch keine der Seiten referenziert wird. Ansonsten können wichtige Daten verloren gehen!
   theme:
     updated: Die Änderungen am Layout wurden gespeichert
-    items: Theme Elemente
-    layout_file: Theme Layout File
-    files: Theme Files
+    items: Template Elemente
+    layout_file: Template Layout File
+    files: Template Files
+    js_files: Javascript Dateien
+    css_files: CSS Dateien
+    images: Bilder
+    others: Andere
   language:
     de: Deutsch
     en: Englisch

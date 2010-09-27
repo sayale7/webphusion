@@ -4,10 +4,37 @@
 	</li>
 </ul>
 
-<ul>
-	<% only_editable(ThemeUpload.find_all_by_theme_id(@theme.id)).each do |upload| %>
+
+<% unless get_by_mime_type(ThemeUpload.find_all_by_theme_id(@theme.id), 'text/css').empty? %>
+<ul class="full">
+	<h3><%= t('theme.css_files') %></h3>
+	<% get_by_mime_type(ThemeUpload.find_all_by_theme_id(@theme.id), 'text/css').each do |upload| %>
 		<li class="full">
 			<%= link_to upload.theme_file.original_filename, upload_files_eiditing_path(:theme_id => @theme.id, :name => upload.theme_file.original_filename) %>
 		</li>
 	<% end %>
 </ul>
+<% end %>
+
+<% unless get_by_mime_type(ThemeUpload.find_all_by_theme_id(@theme.id), 'application/javascriptapplication/x-javascript').empty? %>
+<ul class="full">
+	<h3><%= t('theme.js_files') %></h3>
+	<% get_by_mime_type(ThemeUpload.find_all_by_theme_id(@theme.id), 'application/javascriptapplication/x-javascript').each do |upload| %>
+		<li class="full">
+			<%= link_to upload.theme_file.original_filename, upload_files_eiditing_path(:theme_id => @theme.id, :name => upload.theme_file.original_filename) %>
+		</li>
+	<% end %>
+</ul>
+<% end %>
+
+
+<% unless get_by_mime_type(ThemeUpload.find_all_by_theme_id(@theme.id), 'image/').empty? %>
+<ul class="full">
+	<h3><%= t('theme.images') %></h3>
+	<% get_by_mime_type(ThemeUpload.find_all_by_theme_id(@theme.id), 'image/').each do |upload| %>
+		<li class="full">
+			<%= link_to upload.theme_file.original_filename, upload.theme_file.url, :class => 'popup'  %>
+		</li>
+	<% end %>
+</ul>
+<% end %>

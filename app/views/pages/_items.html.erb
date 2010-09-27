@@ -1,4 +1,9 @@
 <h2><%= @page.name %></h2>
+<br/>
+<h3><%= t('page.common_file_manager') %></h3>
+<div class="full">
+	<%= link_to t('file_upload.upload_common_files'), common_files_url, :class => 'assets_iframe' %> 
+</div>
 <div id="added_items">
 <% unless @page.items_by_theme('Text').empty? %>
 <h3><%= t('item_data.text_items') %></h3>

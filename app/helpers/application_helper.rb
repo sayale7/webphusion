@@ -1,9 +1,9 @@
 module ApplicationHelper
 	
-	def only_editable(array)
+	def get_by_mime_type(array, type)
 		new_array = Array.new
 		array.each do |entry|
-			if entry.theme_file_content_type.eql?('text/css') or entry.theme_file_content_type.include?('application/javascriptapplication/x-javascript')
+			if entry.theme_file_content_type.include?(type) 
 				new_array.push(entry)
 			end
 		end

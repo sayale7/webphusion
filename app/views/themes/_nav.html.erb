@@ -4,10 +4,12 @@
 		<%= link_to t('theme_item.new'), "/theme_items/new?id=#{@theme.id}", :class => 'ajax' %>
 	</li>
 </ul>
-
 <div id="theme_items">
 	<%= render '/theme_items/theme_items' %>
 </div>
+
+
+<div class="divider"></div>
 
 <h3><%= t('theme.layout_file') %></h3>
 <ul>
@@ -15,6 +17,8 @@
 		<%= link_to @theme.name, edit_theme_path(@theme) %>
 	</li>
 </ul>
+
+<div class="divider"></div>
 
 <h3><%= t('theme.files') %></h3>
 

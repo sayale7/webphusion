@@ -20,7 +20,6 @@
 <% @common_files.each_with_index do |common_file, index| %>
 <div class="my_photo_row" data-number="<%= index %>">
 	<div class="info"><p><%= check_box_tag "common_file_ids[]", common_file.id %></p></div>
-	<div class="image"><%= image_tag('/images/movie.jpg', :width => 55, :height => 45) %></div>
 	<div class="info" style="width:100px; overfow:scroll;"><p><%= link_to common_file.asset_file.original_filename, common_file.asset_file.url, :class => 'popup'  %></p></div>
 	<div class="info"><p>(<%= common_file.asset_file.size / 1000 %> kB / <%= common_file.created_at.strftime('%d.%m.%y') %>)</p></div>
 	<div class="info"><p><%= raw clippy("http://webphusion.com/#{common_file.asset_file.url.to_s[0, common_file.asset_file.url.to_s.length - 11]}") %></p></div>

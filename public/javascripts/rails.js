@@ -88,7 +88,7 @@ jQuery(function ($) {
 					$(this).callRemote();
 				}
 			}
-			
+			$(this).html('<img src="/images/ajax-loader.gif"/>');
     });
 
     $('a[data-remote],input[data-remote]').live('click', function (e) {
