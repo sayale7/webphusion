@@ -2,7 +2,7 @@
 	<%= form_for @theme, :remote => true do |f| %>
 		<p><%= f.label :user_id, "Benutzer" %>
 		<%= f.select :user_id, User.all.collect {|user| [ user.email, user.id ] } %></p>
-		<%= f.text_field :name %> - <%= link_to t('common.delete'), @theme, :confirm => t('common.confirm'), :method => :delete %> 
+		<%= f.text_field :name, :id => 'dark' %> - <%= link_to t('common.delete'), @theme, :confirm => t('common.confirm'), :method => :delete %> 
 		<p>
 			<%= f.text_area :theme_content, :cols => 140, :rows => 40, :id => 'code' %>
 		</p>

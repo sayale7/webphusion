@@ -1,5 +1,5 @@
 <%= form_tag upload_files_update_path(:the_path => @the_path, :theme => @theme.id), :remote => true do %>
-	<p><%= text_field_tag :file_name, @file_name %></p>
+	<p><%= text_field_tag :file_name, @file_name, :id => 'dark' %></p>
 	<%= text_area_tag 'file_edit', @content, :id => 'code' %>
 	<p><%= submit_tag t('common.save') %></p>
 <% end %>
