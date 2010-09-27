@@ -27,8 +27,10 @@
 </style> 
 
 <script type="text/javascript"> 
+var the_height = $(window).height() - 130;
+var the_height = the_height.toString() + 'px';
 CodeMirror.fromTextArea('code', {
-	height: '500px',
+	height: the_height,
 	parserfile: "parseliquid.js"  ,
 	stylesheet: ["/codemirror/css/xmlcolors.css", "/stylesheets/liquidcolors.css"],
 	path: "/codemirror/js/",
