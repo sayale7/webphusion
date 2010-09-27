@@ -38,3 +38,14 @@
 	<% end %>
 </ul>
 <% end %>
+
+<% unless get_by_mime_type(ThemeUpload.find_all_by_theme_id(@theme.id), '').empty? %>
+<ul class="full">
+	<h3><%= t('theme.others') %></h3>
+	<% get_by_mime_type(ThemeUpload.find_all_by_theme_id(@theme.id), '').each do |upload| %>
+		<li class="full">
+			<%= link_to upload.theme_file.original_filename, upload.theme_file.url, :class => 'popup'  %>
+		</li>
+	<% end %>
+</ul>
+<% end %>

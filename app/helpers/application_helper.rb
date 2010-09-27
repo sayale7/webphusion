@@ -2,9 +2,17 @@ module ApplicationHelper
 	
 	def get_by_mime_type(array, type)
 		new_array = Array.new
-		array.each do |entry|
-			if entry.theme_file_content_type.include?(type) 
-				new_array.push(entry)
+		if type.to_s.include?('css') or type.to_s.include?('x-javascript') or type.to_s.include?('image/')
+			array.each do |entry|
+				if entry.theme_file_content_type.include?(type) 
+					new_array.push(entry)
+				end
+			end
+		else
+			array.each do |entry|
+				if !entry.theme_file_content_type.to_s.include?('css') and !entry.theme_file_content_type.to_s.include?('x-javascript') and !entry.theme_file_content_type.to_s.include?('image/')
+					new_array.push(entry)
+				end
 			end
 		end
 		return new_array
