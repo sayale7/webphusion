@@ -1,3 +1,4 @@
+<div id="nice_form_left">
 <%= form_for @page, :remote => true do |f| %>
 <%= f.hidden_field :page_kind, :value => @page_kind %>
 <% if @page_kind.to_s.eql?('Page') %>
@@ -20,15 +21,17 @@
 			<h3><%= t('page.common') %></h3>
 			<td><%= f.label :name, t('page.name') %></td>
 			<td><%= f.text_field :name %></td>
-			<td><%= f.label :active, t('common.active') %></td>
-			<td><%= f.check_box :active  %></td>
 			<% else %>
 			<td><%= f.label :name, t('page.newsletter_name') %></td>
 			<td><%= f.text_field :name %></td>
 			<% end %>
 		</tr>
 		
-		
+		<tr>
+			<td><%= f.label :active, t('common.active') %></td>
+			<td><%= f.check_box :active  %></td>
+		</tr>
+
 		<tr>
 			<td><%= f.label :theme_id, t('common.theme') %></td>
 			<td><%= f.select :theme_id, current_user.themes.all.collect {|theme| [ theme.name, theme.id ] } %></td>
@@ -54,3 +57,4 @@
 	<%= f.submit t('common.save') %>
 </p>
 <% end %>
+</div>

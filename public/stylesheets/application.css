@@ -232,7 +232,7 @@ li{
 	clear:none;
 	padding:10px;
 	float:right;
-	background:orange;
+	background:#fff;
 	overflow:hidden;
 }
 #content_full{
@@ -397,6 +397,23 @@ li{
 
 
 #nice_form{
+	width:350px;
+	padding:20px;
+	background:#DFDFDF;
+	background-image:url("/images/accountbg.jpg");
+	background-repeat:repeat-x;
+	background:-moz-linear-gradient(top, #DE8056, #8F5237); /* Firefox */
+	background:-webkit-gradient(linear, left top, left bottom, from(#DE8056), to(#8F5237)); /* Safari, Chrome */
+	border: 0.7pt solid #282828;
+	color: #222;
+	border:solid 1px darkgray;
+	-moz-border-radius:10px; 
+	-khtml-border-radius:10px;
+	overflow:hidden;
+}
+
+#nice_form_left{
+	float:left;
 	width:350px;
 	padding:20px;
 	background:#DFDFDF;

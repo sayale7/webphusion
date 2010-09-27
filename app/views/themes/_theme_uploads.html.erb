@@ -1,6 +1,9 @@
 <ul>
-	<li>
+	<li class="full">
 		<%= link_to t('file_upload.theme_upload'), theme_uploads_url(:theme_id => @theme.id), :class => 'assets_iframe' %> 
+	</li>
+	<li class="full">
+		<%= link_to t('file_upload.new_theme_upload'), new_theme_upload_url(:theme_id => @theme.id), :class => 'ajax' %> 
 	</li>
 </ul>
 

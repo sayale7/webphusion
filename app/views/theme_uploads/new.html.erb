@@ -1,0 +1,16 @@
+<div id="nice_form_left">
+<%= form_for(@theme_upload) do |f| %>
+	<%= f.hidden_field :theme_id, :value => @theme_id %>
+	<p>
+		<%= f.label :theme_file_file_name, t('theme_item.name') %>
+		<%= f.text_field :theme_file_file_name %>
+	</p>
+	<p>
+		<%= f.label :theme_file_content_type, t('theme_item.item_kind') %>
+		<%= f.select :theme_file_content_type, { "Stylesheet" => "text/css", "Javascript" => "application/javascriptapplication/x-javascript"} %>
+	</p>
+	<p>
+		<%= f.submit t('common.save') %>
+	</p>
+<% end %>
+</div>

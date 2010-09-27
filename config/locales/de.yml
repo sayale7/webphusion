@@ -45,6 +45,8 @@ de:
     copy_to_area: Bild einfügen
     upload: Bilder Manager
     collection_uploads: Filemanager
+    new_theme_upload: Neues File anlegen
+    exists: Datei existiert schon
   navigation:
     layout_management: Layout-Verwaltung
     page_management: Seiten-Verwaltung
