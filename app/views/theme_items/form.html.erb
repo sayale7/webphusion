@@ -1,3 +1,4 @@
+<div id="nice_form_left">
 <%= form_for @theme_item, :html => {:class => 'ajax_form'} do |f| %>
 	<%= f.hidden_field :theme_id, :value  => @theme.id %>
 	<p>
@@ -12,3 +13,4 @@
 		<%= f.submit t('common.save') %>
 	</p>
 <% end %>
+</div>
