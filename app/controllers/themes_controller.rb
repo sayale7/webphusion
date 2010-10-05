@@ -64,36 +64,40 @@ class ThemesController < ApplicationController
 	end
 	
 	def upload_files_update
+		the_file = File.open(params[:the_path], 'w')
+		the_file.write(params[:file_edit])
+		redirect_to "/upload_files_eiditing?theme_id=#{params[:theme]}&name=#{File.open(params[:the_path], 'w').original_filename}&content_length=#{params[:file_edit].to_s.length}"
 		
-		the_filename = ""
-		if params[:file_name].include?('.')
-			the_filename = params[:file_name].split('.').first
-		else
-			the_filename = params[:file_name]
-		end
-		
-		exists = false
-		
-		ThemeUpload.find_all_by_theme_id(params[:theme]).each do |file|
-			if the_filename.to_s.eql?(file.theme_file_file_name.split('.').first)
-			 	exists = true
+		if false
+			the_filename = ""
+			if params[:file_name].include?('.')
+				the_filename = params[:file_name].split('.').first
+			else
+				the_filename = params[:file_name]
+			end
+
+			exists = false
+
+			ThemeUpload.find_all_by_theme_id(params[:theme]).each do |file|
+				if the_filename.to_s.eql?(file.theme_file_file_name.split('.').first)
+					exists = true
+				end
+			end
+			debugger
+			unless exists
+				the_file = File.open(params[:the_path], 'w')
+				the_file.write(params[:file_edit])
+				old_path = params[:the_path]
+				theme_file = ThemeUpload.find_by_theme_id_and_theme_file_file_name(params[:theme], the_file.original_filename)
+				new_path = params[:the_path][0, old_path.length - the_file.original_filename.length] << the_filename << file_name_update(theme_file)
+				theme_file.theme_file_file_name = the_filename << file_name_update(theme_file)
+				theme_file.save
+				File.rename(old_path, new_path)
+				redirect_to "/upload_files_eiditing?theme_id=#{params[:theme]}&name=#{theme_file.theme_file_file_name}&content_length=#{params[:file_edit].to_s.length}"
+			else
+				redirect_to "/upload_files_eiditing?theme_id=#{params[:theme]}&name=#{File.open(params[:the_path], 'w').original_filename}&content_length=#{params[:file_edit].to_s.length}"
 			end
 		end
-		
-		unless exists
-			the_file = File.open(params[:the_path], 'w')
-			the_file.write(params[:file_edit])
-			old_path = params[:the_path]
-			theme_file = ThemeUpload.find_by_theme_id_and_theme_file_file_name(params[:theme], the_file.original_filename)
-			new_path = params[:the_path][0, old_path.length - the_file.original_filename.length] << the_filename << file_name_update(theme_file)
-			theme_file.theme_file_file_name = the_filename << file_name_update(theme_file)
-			theme_file.save
-			File.rename(old_path, new_path)
-			redirect_to "/upload_files_eiditing?theme_id=#{params[:theme]}&name=#{theme_file.theme_file_file_name}&content_length=#{params[:file_edit].to_s.length}"
-		else
-			redirect_to "/upload_files_eiditing?theme_id=#{params[:theme]}&name=#{File.open(params[:the_path], 'w').original_filename}&content_length=#{params[:file_edit].to_s.length}"
-		end
-		
 	end
 	
 	def file_name_update(theme_file)

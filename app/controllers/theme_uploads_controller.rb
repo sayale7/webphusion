@@ -64,6 +64,7 @@ class ThemeUploadsController < ApplicationController
 			elsif params[:theme_upload][:theme_file_content_type].to_s.eql?('text/css')
 				theme_upload.theme_file_file_name = theme_upload.theme_file_file_name << '.css'
 			end
+			File.delete("#{Rails.root}/#{theme_upload.theme_file_file_name.split('.').first}")
 			if theme_upload.save
 				redirect_to upload_files_eiditing_path(:theme_id => theme_upload.theme_id, :name => theme_upload.theme_file.original_filename)
 			else
@@ -74,9 +75,6 @@ class ThemeUploadsController < ApplicationController
 		end
 	end
 	
-	def rename
-		
-	end
 	
 	def destroy
 		
