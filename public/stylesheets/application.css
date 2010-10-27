@@ -206,6 +206,12 @@ li{
 	-moz-border-radius:5px; 
 	-khtml-border-radius:5px;
 	border-radius: 5px;
+	text-overflow:ellipsis; 
+	overflow:hidden; 
+	white-space:nowrap; 
+	cursor:default; 
+	text-decoration:none;
+	display:block;
 }
 
 #side_nav a:hover {

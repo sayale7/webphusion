@@ -87,7 +87,7 @@ jQuery(function ($) {
 				}else{
 					$(this).callRemote();
 				}
-			}
+			}	
 			$(this).html('<img src="/images/ajax-loader.gif"/>');
     });
 
