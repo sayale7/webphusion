@@ -1,6 +1,6 @@
 class Asset < ActiveRecord::Base
 	
-	liquid_methods  :image_path, :asset_description, :thumb_image_path, :medium_image_path
+	liquid_methods  :image_path, :asset_description, :thumb_image_path, :medium_image_path, :width, :height
 	before_save :set_dimensions
 
 
