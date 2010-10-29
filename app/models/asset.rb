@@ -1,6 +1,6 @@
 class Asset < ActiveRecord::Base
 	
-	liquid_methods :image_path, :asset_description, :thumb_image_path, :medium_image_path
+	liquid_methods :image_width, :image_height, :image_path, :asset_description, :thumb_image_path, :medium_image_path
 	
 	attr_accessible :user_id, :image, :collection_id
 	belongs_to :user
@@ -58,6 +58,13 @@ class Asset < ActiveRecord::Base
 	def asset_description
 		return Description.find_by_language_and_descriptionable_type_and_descriptionable_id(I18n.locale, 'Asset', self.id).content
 	end
+	
+	def image_width
+		return self.image.width
+	end
 
+	def image_width
+		return self.image.height
+	end
 	
 end
