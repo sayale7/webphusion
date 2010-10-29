@@ -26,7 +26,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$("#container").css('height', $(window).height());
+	$("#content").parent().css('height', $(window).height());
 	
 	$('.show_image_gallery').live('click', function(e){
 		e.preventDefault();
