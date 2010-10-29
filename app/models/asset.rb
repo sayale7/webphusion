@@ -1,8 +1,10 @@
 class Asset < ActiveRecord::Base
 	
-	liquid_methods :image_width, :image_height, :image_path, :asset_description, :thumb_image_path, :medium_image_path
-	
-	attr_accessible :user_id, :image, :collection_id
+	liquid_methods  :image_path, :asset_description, :thumb_image_path, :medium_image_path
+	before_save :set_dimensions
+
+
+	attr_accessible :user_id, :image, :collection_id, :width, :height
 	belongs_to :user
 	has_attached_file :image,
 	 									:styles => { :medium => "490x490>", :thumb => "65x45#" },
@@ -59,12 +61,14 @@ class Asset < ActiveRecord::Base
 		return Description.find_by_language_and_descriptionable_type_and_descriptionable_id(I18n.locale, 'Asset', self.id).content
 	end
 	
-	def image_width
-		return self.image.width
-	end
+	def set_dimensions
+	  tempfile = self.image.queued_for_write[:original]
 
-	def image_width
-		return self.image.height
+	  unless tempfile.nil?
+	    dimensions = Paperclip::Geometry.from_file(tempfile)
+	    self.width = dimensions.width
+	    self.height = dimensions.height
+	  end
 	end
 	
 end
