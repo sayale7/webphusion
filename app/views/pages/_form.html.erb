@@ -2,7 +2,7 @@
 <%= form_for @page, :remote => true do |f| %>
 <%= f.hidden_field :page_kind, :value => @page_kind %>
 <% if @page_kind.to_s.eql?('Page') %>
-<div class="page_info_section">
+<div class="page_info_section" style="display:none">
 	<h3><%= t('page.available_languages') %></h3>
 	<% for language in Language.all.each do %>
 		<%= check_box_tag "languages[]", language.language, @page.is_added_language(language.id) %><%= language.language %>
@@ -17,15 +17,15 @@
 	
 	<table>
 		<tr>
-			<% if @page_kind.to_s.eql?('Page') %>
-			<h3><%= t('page.common') %></h3>
 			<td><%= f.label :name, t('page.name') %></td>
 			<td><%= f.text_field :name %></td>
-			<% else %>
-			<td><%= f.label :name, t('page.newsletter_name') %></td>
-			<td><%= f.text_field :name %></td>
-			<% end %>
 		</tr>
+		
+		<tr>
+			<td><%= f.label :english_name, t('page.english_name') %></td>
+			<td><%= f.text_field :english_name %></td>
+		</tr>
+
 		
 		<tr>
 			<td><%= f.label :active, t('common.active') %></td>
@@ -35,16 +35,12 @@
 		<tr>
 			<td><%= f.label :theme_id, t('common.theme') %></td>
 			<td><%= f.select :theme_id, current_user.themes.all.collect {|theme| [ theme.name, theme.id ] } %></td>
-			<td></td>
-			<td></td>
 		</tr>
 		
 		<% if !has_children(@page) and @page_kind.to_s.eql?('Page') %>
 		<tr>
 			<td><%= f.label :parent_id, t('page.parent') %></td>
 			<td><%= f.select :parent_id, (current_user.pages.find_all_by_parent_id(nil) - @page.to_a).collect {|page| [ page.name, page.id ] }, :include_blank => t('common.none') %></td>
-			<td></td>
-			<td></td>
 		</tr>
 		<% end %>
 		

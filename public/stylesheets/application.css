@@ -420,7 +420,7 @@ li{
 
 #nice_form_left{
 	float:left;
-	width:350px;
+	width:750px;
 	padding:20px;
 	background:#DFDFDF;
 	background-image:url("/images/accountbg.jpg");
@@ -450,7 +450,7 @@ li{
 
 .page_info_section{
 	padding:5px;
-	width:450px;
+/*	width:650px;*/
 }
 
 .divider{

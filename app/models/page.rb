@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
 	
-	liquid_methods :id, :page_url, :name, :title, :parent_id, :sub_pages, :gallery, :added_languages
+	liquid_methods :id, :page_url, :name, :english_name, :localized_name, :parent_id, :sub_pages, :gallery, :added_languages
 	
 	belongs_to :user
 	belongs_to :theme
@@ -58,6 +58,14 @@ class Page < ActiveRecord::Base
   def self.current_locale=(locale)
     Thread.current[:current_locale] = locale
   end
+
+	def localized_name
+		if I18n.locale.to_s.eql?('de')
+			self.name
+		else
+			self.english_name
+		end
+	end
 
 	def sub_pages
 		Page.find_all_by_parent_id(self.id, :order => 'position')

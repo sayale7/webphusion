@@ -94,6 +94,7 @@ de:
     deliver_newsletter: Newsletter verschicken
     show_newsletter: Newsletter 
     common_file_manager: Filemanager
+    english_name: Englischer Name
   messages:
     cannot_destroy_theme: Dieses Layout kann nur gelöscht werden, wenn es durch keine der Seiten referenziert wird. Ansonsten können wichtige Daten verloren gehen!
   theme:

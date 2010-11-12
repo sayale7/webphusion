@@ -40,6 +40,7 @@ class ItemDatasController < ApplicationController
 	def update_content
 		@item_data_content = ItemDataContent.find(params[:id])
 		@item_data_content.update_attributes(params[:item_data_content])
+		@simple_item = @item_data_content
 		@page = @item_data_content.item.page
 		render :template => '/item_datas/edit_content'
 		#redirect_to edit_page_path(@item_data_content.item_data.page.id)
