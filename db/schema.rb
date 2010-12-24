@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(:version => 20100924124403) do
   end
 
   create_table "pages", :force => true do |t|
-    t.string   "title"
+    t.string   "english_name"
     t.integer  "theme_id"
     t.datetime "created_at"
     t.datetime "updated_at"
