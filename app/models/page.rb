@@ -77,7 +77,7 @@ class Page < ActiveRecord::Base
 	
 	def gallery
 		item = Item.find_by_page_id_and_theme_item_id(self.id, self.theme.theme_items.find_by_item_kind('Bilder').id)
-		return Asset.find_all_by_collection_id(item.id) rescue nil
+		return Asset.find_all_by_collection_id(item.id, :order => "position") rescue nil
 	end
 	
 	def update_items_for_theme
