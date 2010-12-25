@@ -31,7 +31,7 @@
 	<h3><%= t('item_data.image_gallery') %></h3>
 	<% @page.items_by_theme('Bilder').each do |item| %>
 		<div class="full" id="item_<%= item.id %>">
-			<%= link_to item.theme_item.name, "/edit_content?item_id=#{item.id}", :remote => true %>
+			<%= link_to item.theme_item.name, "/edit_content?item_id=#{item.id}&parent_id=nil", :remote => true %>
 		</div>
 	<% end %>
 <% end %>

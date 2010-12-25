@@ -5,14 +5,24 @@ class AssetsController < ApplicationController
   def index
   	@delete_hash = Hash.new
 		if params[:collection_id]
-			@assets = Asset.find_all_by_collection_id(params[:collection_id])
+			@assets = Asset.find_all_by_collection_id_and_parent_id(params[:collection_id], params[:parent_id], :order => 'position')
 			@collection_id = params[:collection_id]
+			@parent_id = params[:parent_id]
 		else
-			@assets = current_user.assets.find_all_by_collection_id(nil)			
+			@assets = current_user.assets.find_all_by_collection_id(nil, :order => 'position')			
 			@collection_id = nil
+			@parent_id = nil
 		end
 		render :layout => '/layouts/iframe_popup', :template => '/assets/index'
   end
+
+	def update_asset_order
+		  page_id = Page.find(Item.find(Asset.find(params[:asset_ids].first).collection_id).page_id).id
+			params[:asset_ids].each_with_index do |asset_id, index|
+				Asset.find(asset_id).update_attribute(:position, index)
+			end
+			redirect_to "/edit_content?page_id=#{page_id}"
+	end
 
 	def upload_assets
 		user = User.find(current_user)
@@ -35,12 +45,18 @@ class AssetsController < ApplicationController
 	
 	def destroy_selected
 		the_collection = Asset.find(params[:asset_ids].first).collection_id
+		the_parent_id = Asset.find(params[:asset_ids].first).parent_id
 		Asset.destroy_all(:id => params[:asset_ids])
 		if the_collection.nil?
 			redirect_to assets_path
 		else
-			redirect_to assets_path(:collection_id  => the_collection)
+			redirect_to assets_path(:collection_id  => the_collection, :parent_id => the_parent_id)
 		end
+	end
+	
+	def reorder_assets
+		parent_id = params[:parent_id] == nil ? nil : params[:parent_id]
+		@assets = Asset.find_all_by_collection_id_and_parent_id(params[:collection_id], parent_id, :order => 'position')
 	end
 	
 	
@@ -63,6 +79,8 @@ class AssetsController < ApplicationController
 			h = Hash.new 
 			h[:asset] = Hash.new 
 			h[:asset][:collection_id] = params[:collection_id]
+			h[:asset][:parent_id] = params[:parent_id]
+			h[:asset][:position] = Asset.find_all_by_collection_id_and_parent_id(params[:collection_id], params[:parent_id]).size
 			h[:asset][:user_id] = current_user.id
 			h[:asset][:image] = params[:Filedata]
 			h[:asset][:image].content_type = MIME::Types.type_for(h[:asset][:image].original_filename).to_s

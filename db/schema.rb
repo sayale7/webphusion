@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101224124727) do
+ActiveRecord::Schema.define(:version => 20101224144101) do
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20101224124727) do
     t.integer  "width"
     t.integer  "height"
     t.integer  "position"
+    t.integer  "parent_id"
   end
 
   create_table "common_files", :force => true do |t|

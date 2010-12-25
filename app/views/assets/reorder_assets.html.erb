@@ -1,0 +1,23 @@
+<%= stylesheet 'jquery-ui' %>
+<%= javascript 'jquery-ui' %>
+<style>
+	li:hover{cursor:move;}
+</style>
+<script type="text/javascript">
+$(function() {
+	$("#root").sortable();
+	$("#root").disableSelection();
+});
+</script>
+
+<% form_tag update_asset_order_url, :method => :get do %>
+<ul id="root">
+	<% for asset in @assets %>
+		<li class="with_border">
+			<%= image_tag(asset.image.url(:thumb)) %>
+			<%= hidden_field_tag "asset_ids[]", asset.id %>
+		</li>
+	<% end %>
+</ul>
+<p><%= submit_tag t('common.update') %></p>
+<% end %>

@@ -44,6 +44,8 @@ Easywebman::Application.routes.draw do |map|
 	match "/edit_recipient" => "recipients#edit"
 	match "/destroy_recipient" => "recipients#destroy"
 	match "/deliver_newsletter" => "pages#deliver_newsletter"
+	match "/reorder_assets" => "assets#reorder_assets"
+	match "/update_asset_order" => "assets#update_asset_order"
 	
 	constraints(Subdomain) do  
     match '/' => 'pages#show'

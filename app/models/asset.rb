@@ -1,10 +1,10 @@
 class Asset < ActiveRecord::Base
 	
-	liquid_methods  :image_path, :asset_description, :thumb_image_path, :medium_image_path, :width, :height
+	liquid_methods  :image_path, :asset_description, :thumb_image_path, :medium_image_path, :width, :height, :parent_id
 	before_save :set_dimensions
 
 
-	attr_accessible :user_id, :image, :collection_id, :width, :height
+	attr_accessible :user_id, :image, :collection_id, :width, :height, :parent_id, :position
 	belongs_to :user
 	has_attached_file :image,
 	 									:styles => { :medium => "490x490>", :thumb => "65x45#" },
@@ -23,7 +23,11 @@ class Asset < ActiveRecord::Base
 	# 	trans << "\\) +matte -compose CopyOpacity -composite "
 	# end,
 	
-	after_save :attach_asset_descriptions
+	after_save :attach_asset_descriptions #, :set_position
+	
+	def set_position
+		self.update_attribute('position', Asset.find_all_by_collection_id_and_parent_id(self.collection_id, self.parent_id).size)
+	end
 	
 	def descriptions
 		Description.find_all_by_descriptionable_type_and_descriptionable_id('Asset', self.id)
