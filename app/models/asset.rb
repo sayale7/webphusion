@@ -1,6 +1,6 @@
 class Asset < ActiveRecord::Base
 	
-	liquid_methods  :image_path, :asset_description, :thumb_image_path, :medium_image_path, :width, :height, :parent_id
+	liquid_methods  :image_path, :asset_description, :thumb_image_path, :medium_image_path, :width, :height, :parent_id, :sub_items
 	before_save :set_dimensions
 
 
@@ -73,6 +73,10 @@ class Asset < ActiveRecord::Base
 	    self.width = dimensions.width
 	    self.height = dimensions.height
 	  end
+	end
+	
+	def sub_items
+		Asset.find_all_by_parent_id_and_collection_id(self.id, self.collection_id)
 	end
 	
 end

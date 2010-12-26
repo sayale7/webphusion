@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
 	
-	liquid_methods :id, :page_url, :name, :english_name, :localized_name, :parent_id, :sub_pages, :gallery, :added_languages
+	liquid_methods :id, :page_url, :name, :english_name, :localized_name, :parent_id, :sub_pages, :gallery, :added_languages, :gallery_all
 	
 	belongs_to :user
 	belongs_to :theme
@@ -78,6 +78,11 @@ class Page < ActiveRecord::Base
 	def gallery
 		item = Item.find_by_page_id_and_theme_item_id(self.id, self.theme.theme_items.find_by_item_kind('Bilder').id)
 		return Asset.find_all_by_collection_id_and_parent_id(item.id, nil, :order => "position") rescue nil
+	end
+
+	def gallery_all
+		item = Item.find_by_page_id_and_theme_item_id(self.id, self.theme.theme_items.find_by_item_kind('Bilder').id)
+		return Asset.find_all_by_collection_id(item.id, :order => "position") rescue nil
 	end
 	
 	def update_items_for_theme

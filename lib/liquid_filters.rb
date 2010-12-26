@@ -39,4 +39,13 @@ module LiquidFilters
 		return  ItemDataContent.find_by_locale_and_item_id(Thread.current[:current_locale].to_s, item.id).content rescue " "
 	end
 	
+	def gallery(parent_id)
+		if parent_id.to_s.eql?('nil')
+			parent_id = nil
+		end
+		page = Page.find(Thread.current[:current_page])
+		item = Item.find_by_page_id_and_theme_item_id(page.id, page.theme.theme_items.find_by_item_kind('Bilder').id)
+		return Asset.find_all_by_collection_id_and_parent_id(item.id, parent_id, :order => "position") rescue nil
+	end
+	
 end
